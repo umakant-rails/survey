@@ -14,7 +14,8 @@
       "angular-resource": "latest",
       "jquery-ui": "latest",
       "bootstrap-sass-official": "latest",
-      "angular-devise": "latest"
+      "angular-devise": "latest",
+      "angular-growl": "latest"
     }
   }
 }

@@ -19,6 +19,7 @@
 //= require angular-rails-templates
 //= require angular-resource
 //= require angular-route
+//= require angular-growl
 //= require_tree ../templates
 //= require survey/surveyApp
 

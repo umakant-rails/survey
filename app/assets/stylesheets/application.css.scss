@@ -19,3 +19,11 @@
 .bdr{
   border-bottom: 1px solid lightgray;
 }
+
+.growl-notification{
+  position:fixed;
+  z-index:5000;
+  right: 10px;
+  top: 5px;
+  min-width:600px;
+}
