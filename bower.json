@@ -13,7 +13,8 @@
       "angular-route": "latest",
       "angular-resource": "latest",
       "jquery-ui": "latest",
-      "bootstrap-sass-official": "latest"
+      "bootstrap-sass-official": "latest",
+      "angular-devise": "latest"
     }
   }
 }

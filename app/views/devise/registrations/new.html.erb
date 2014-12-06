@@ -1,0 +1,66 @@
+<div class="row">
+  <div class="col-lg-4"></div>
+  <div class="col-lg-4">
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+    <div class="row signup-block">
+      <div class="col-lg-2"></div>
+      <div class="col-lg-8 signup-block-hdr">
+        <center><strong>CREATE YOUR ACCOUNT</strong></center>
+      </div>
+      <div class="col-lg-2"></div>
+      <div class="clear bdr"></div>
+      <div class="col-lg-2"></div>
+      <div class="col-lg-8">
+        <%= devise_error_messages! %>
+      </div>
+      <div class="col-lg-2"></div>
+      <div class="clearboth"></div>
+      <div class="spacer"></div>
+      <div class="col-lg-2"></div>
+      <div class="col-lg-8">
+        <strong>Email</strong>
+        <div class="clear"></div>
+        <%= f.email_field :email, autofocus: true, class: "form-control" %>
+      </div>
+      <div class="col-lg-2"></div>
+      <div class="clearboth"></div>
+      <div class="spacer"></div>
+      <div class="col-lg-2"></div>
+      <div class="col-lg-8">
+        <strong>Username</strong>
+        <div class="clear"></div>
+        <%= f.email_field :username, autofocus: true, class: "form-control" %>
+      </div>
+      <div class="col-lg-2"></div>
+      <div class="clearboth"></div>
+      <div class="spacer"></div>
+      <div class="col-lg-2"></div>
+      <div class="col-lg-8">
+        <strong>Password</strong><em>(<%= @minimum_password_length %> characters minimum)</em><br />
+        <div class="clear"></div>
+        <%= f.password_field :password, autocomplete: "off", class: "form-control" %>
+      </div>
+      <div class="col-lg-2"></div>
+      <div class="clearboth"></div>
+      <div class="spacer"></div>
+      <div class="col-lg-2"></div>
+      <div class="col-lg-8">
+        <strong>Password Confirmation</strong>
+        <div class="clear"></div>
+        <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control" %>
+      </div>
+      <div class="col-lg-2"></div>
+      <div class="clearboth"></div>
+      <div class="spacer"></div>
+      <div class="col-lg-2"></div>
+      <div class="col-lg-8">
+        <%= f.submit "Sign up", class: 'btn btn-primary form-control' %>
+        <div class="clear"></div>
+        <%= render "devise/shared/links" %>
+      </div>
+      <div class="col-lg-2"></div>
+    </div>
+    <% end %>
+  </div>
+  <div class="col-lg-4"></div>
+</div>

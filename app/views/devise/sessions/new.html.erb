@@ -1,0 +1,56 @@
+<div class="row">
+  <div class="col-lg-4"></div>
+  <div class="col-lg-4">
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+    <div class="row signup-block">
+      <div class="col-lg-2"></div>
+      <div class="col-lg-8 signup-block-hdr">
+        <center><strong>SIGN IN</strong></center>
+      </div>
+      <div class="col-lg-2"></div>
+      <div class="clear bdr"></div>
+      <div class="col-lg-2"></div>
+      <div class="col-lg-8">
+        <%= devise_error_messages! %>
+      </div>
+      <div class="col-lg-2"></div>
+      <div class="clearboth"></div>
+      <div class="spacer"></div>
+      <div class="col-lg-2"></div>
+      <div class="col-lg-8">
+        <strong>Email</strong>
+        <div class="clear"></div>
+        <%= f.email_field :email, autofocus: true, class: "form-control" %>
+      </div>
+      <div class="col-lg-2"></div>
+      <div class="clearboth"></div>
+      <div class="spacer"></div>
+      <div class="col-lg-2"></div>
+      <div class="col-lg-8">
+        <strong>Password</strong>
+        <div class="clear"></div>
+        <%= f.password_field :password, autocomplete: "off", class: "form-control" %>
+      </div>
+      <div class="col-lg-2"></div>
+      <div class="clearboth"></div>
+      <div class="spacer"></div>
+      <div class="col-lg-2"></div>
+      <div class="col-lg-8">
+        <%= f.check_box :remember_me %>
+        <%= f.label :remember_me %>
+      </div>
+      <div class="col-lg-2"></div>
+      <div class="clearboth"></div>
+      <div class="spacer"></div>
+      <div class="col-lg-2"></div>
+      <div class="col-lg-8">
+        <%= f.submit "Log in", class: 'btn btn-primary form-control' %>
+        <div class="clear"></div>
+        <%= render "devise/shared/links" %>
+      </div>
+      <div class="col-lg-2"></div>
+    </div>
+    <% end %>
+  </div>
+  <div class="col-lg-4"></div>
+</div>

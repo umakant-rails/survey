@@ -6,8 +6,12 @@
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
-<body>
-  <div id="container" ng-app="surveyApp">
+<body ng-app="surveyApp">
+  <%= render partial: "layouts/navbar" %>
+  <div id="container" class="container-fluid">
+    <!--<div ng-include="'layouts/navbar.html'"></div>-->
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
     <%= yield %>
   </div>
 </body>
