@@ -20,5 +20,6 @@
 //= require angular-resource
 //= require angular-route
 //= require_tree ../templates
+//= require survey/surveyApp
 
 //= require_tree .

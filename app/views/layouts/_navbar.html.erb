@@ -8,17 +8,25 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="/">Survey</a>
+      <% if !current_user %>
+        <a class="navbar-brand" href="/">Survey</a>
+      <% else %>
+        <a class="navbar-brand" href="<%= homes_path %>">Survey</a>
+      <% end %>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-9">
       <ul class="nav navbar-nav">
-        <li class="active"><a href="#">Home</a></li>
       </ul>
       <ul class="nav navbar-nav pull-right">
-        <li><a href="/users/sign_in">Sign in</a></li>
-        <li><a href="/users/sign_up">Sign up</a></li>
+        <% if !current_user %>
+          <li><a href="<%= user_session_path %>">Sign in</a></li>
+          <li><a href="<%= new_user_registration_path %>">Sign up</a></li>
+        <% else %>
+          <li><a href="#"><%= current_user.username %></a></li>
+          <li><%= link_to('Sign out', destroy_user_session_path, :method => :delete) %></li>
+        <% end %>
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->

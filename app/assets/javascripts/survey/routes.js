@@ -1,11 +1,11 @@
-/*quoterApp.config(['$routeProvider', '$locationProvider', function ($routeProvider, $locationProvider) {
-    $routeProvider.when('/', {
-        templateUrl: 'quotes/new.html',
-        controller: 'QuoteNewCtrl'
+surveyApp.config(['$routeProvider', '$locationProvider', function ($routeProvider, $locationProvider) {
+    $routeProvider.when('homes/home', {
+      templateUrl: 'homes/home.html',
+      controller: 'HomesIndexCtrl'
     });
     return $routeProvider.otherwise({
-        templateUrl: 'quotes/new.html',
-        controller: 'QuoteNewCtrl'
+      templateUrl: 'homes/home.html',
+      controller: 'HomesIndexCtrl'
     })
 }]);
-*/
+
