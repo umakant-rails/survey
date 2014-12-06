@@ -1,6 +1,6 @@
 function Feature($resource){
   return $resource('/features/:id.json', null, {
-    'new': {method:'GET'} ,
+    'all': {method:'GET'} ,
     'create': {method:'POST'}
   });
 };

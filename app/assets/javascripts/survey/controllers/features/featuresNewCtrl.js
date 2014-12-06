@@ -2,7 +2,7 @@ function FeaturesNewCtrl($scope, Feature, growl) {
 
   $scope.init = function(){
     var numbersOfFeature = [];
-    Feature.new({}, function(response){
+    Feature.all({}, function(response){
       for(var count = 0; count < response.numbers_of_feature; count ++){
         numbersOfFeature.push(count+1);
       }

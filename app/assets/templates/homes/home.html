@@ -1,2 +1,15 @@
-<div class="row">
+<div class="row" style="margin-top:-20px;">
+  <div class="col-lg-2 lft-feature-bar">
+    <div ng-repeat="feature in features" class="feature-lbl">
+      {{feature.title}}
+    </div>
+  </div>
+  <div class="col-lg-10 rght-feature-bar">
+    <div class="circle-contaner">
+      <div class="non-interested-circle">
+        <div class="interested-circle"></div>
+      </div>
+    </div>
+    <div class="next-button">Next&nbsp;&nbsp;<i class="glyphicon glyphicon-arrow-right"></i></div>
+  </div>
 </div>

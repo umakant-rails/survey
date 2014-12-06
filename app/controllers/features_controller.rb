@@ -6,7 +6,7 @@ class FeaturesController < ApplicationController
     nubmers_of_feature = Feature::NUMBER_OF_FEATURE - features.length
     respond_to do |format|
       format.html
-      format.json { render json: {:numbers_of_feature => nubmers_of_feature}}
+      format.json { render json: {:features => features, :numbers_of_feature => nubmers_of_feature}}
     end
   end
 
