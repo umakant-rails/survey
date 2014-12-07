@@ -1,10 +1,17 @@
-function HomesIndexCtrl($scope, Feature) {
+function HomesIndexCtrl($scope, $location, featureService, featureFactory) {
   $scope.featrueIndex = function(){
-    Feature.all({}, function(response){
+    featureService.all({}, function(response){
       $scope.features = response.features;
     });
+  },
+
+  $scope.refineFeature =  function() {
+    featureFactory.setInterestedFeature($scope.interestedFeature);
+    featureFactory.setNonInterestedFeature($scope.nonInterestedFeature);
+    $location.path('/features/refine_features');
   }
+
   $scope.featrueIndex();
 }
 
-surveyApp.controller('HomesIndexCtrl', ['$scope', 'Feature', HomesIndexCtrl]);
+surveyApp.controller('HomesIndexCtrl', ['$scope', '$location', 'featureService', 'featureFactory', HomesIndexCtrl]);

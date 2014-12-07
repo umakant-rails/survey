@@ -18,8 +18,8 @@ surveyApp.directive("ddDropTarget", function () {
         for (var index = 0; index < $scope.features.length; index++) {
           var feature = $scope.features[index];
           if (feature.id == feature_id) {
-            if($scope.interested === undefined){$scope.interested = [];}
-            $scope.interested.push(feature);
+            if($scope.interestedFeature === undefined){$scope.interestedFeature = [];}
+            $scope.interestedFeature.push(feature);
             $scope.features.splice(index, 1);
           }
         }
@@ -29,8 +29,8 @@ surveyApp.directive("ddDropTarget", function () {
         for (var index = 0; index < $scope.features.length; index++) {
           var feature = $scope.features[index];
           if (feature.id == feature_id) {
-            if($scope.nonInterested === undefined){$scope.nonInterested = [];}
-            $scope.nonInterested.push(feature);
+            if($scope.nonInterestedFeature === undefined){$scope.nonInterestedFeature = [];}
+            $scope.nonInterestedFeature.push(feature);
             $scope.features.splice(index, 1);
           }
         }

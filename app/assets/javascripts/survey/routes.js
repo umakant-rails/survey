@@ -1,5 +1,5 @@
 surveyApp.config(['$routeProvider', '$locationProvider', function ($routeProvider, $locationProvider) {
-    $routeProvider.when('/', {
+    $routeProvider.when('homes/home', {
       templateUrl: 'homes/home.html',
       controller: 'HomesIndexCtrl'
     });

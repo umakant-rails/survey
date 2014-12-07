@@ -1,7 +1,11 @@
 surveyApp.config(['$routeProvider', '$locationProvider', function ($routeProvider, $locationProvider) {
-  $routeProvider.when('/question/new', {
+  $routeProvider.when('/features/new', {
       templateUrl: 'features/new.html',
       controller: 'FeaturesNewCtrl'
+  });
+  $routeProvider.when('/features/refine_features', {
+      templateUrl: 'features/refine_features.html',
+      controller: 'FeaturesRefineCtrl'
   });
 }]);
 

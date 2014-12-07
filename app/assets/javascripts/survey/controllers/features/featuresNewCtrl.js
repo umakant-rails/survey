@@ -1,8 +1,8 @@
-function FeaturesNewCtrl($scope, Feature, growl) {
+function FeaturesNewCtrl($scope, featureService, growl) {
 
   $scope.init = function(){
     var numbersOfFeature = [];
-    Feature.all({}, function(response){
+    featureService.all({}, function(response){
       for(var count = 0; count < response.numbers_of_feature; count ++){
         numbersOfFeature.push(count+1);
       }
@@ -19,7 +19,7 @@ function FeaturesNewCtrl($scope, Feature, growl) {
       }
     });
     if(features.length > 0){
-      Feature.create({features: features}, function(response){
+      featureService.create({features: features}, function(response){
         if(response.success) {
           $scope.features = response.features;
           growl.addSuccessMessage(response.message);
@@ -34,4 +34,4 @@ function FeaturesNewCtrl($scope, Feature, growl) {
 
  $scope.init();
 }
-surveyApp.controller('FeaturesNewCtrl', ['$scope', 'Feature', 'growl', FeaturesNewCtrl]);
+surveyApp.controller('FeaturesNewCtrl', ['$scope', 'featureService', 'growl', FeaturesNewCtrl]);

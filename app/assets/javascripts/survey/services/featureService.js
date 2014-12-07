@@ -1,7 +1,7 @@
-function Feature($resource){
+function featureService($resource){
   return $resource('/features/:id.json', null, {
     'all': {method:'GET'} ,
     'create': {method:'POST'}
   });
 };
-surveyApp.service('Feature', ['$resource', Feature]);
+surveyApp.service('featureService', ['$resource', featureService]);

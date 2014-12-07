@@ -1,0 +1,61 @@
+<div class="row" style="margin-top:-20px;">
+  <div class="col-lg-2 lft-feature-bar">
+    <div class="feature-hdr-lbl">
+      Selected top three features
+    </div>
+    <div ng-if="interestedFeature.length > 0" ng-repeat="feature in interestedFeature" class="feature-lbl" dd-draggable="true" featureid="{{feature.id}}">
+      {{feature.title}}
+    </div>
+    <div ng-if="interestedFeature.length == 0" class="feature-lbl">
+      There is no more interested features.
+    </div>
+  </div>
+  <div class="col-lg-10 refine-features-block">
+    <div style="margin-top:75px;"></div>
+    <div class="row">
+      <div class="col-md-4"></div>
+      <div class="col-md-4">
+        <div class="txt-hdr">What is your top 3?</div>
+      </div>
+      <div class="col-md-4"></div>
+    </div>
+    <div class="clearboth" style="margin-top: 100px;"></div>
+    <div class="row">
+      <div class="col-md-2"></div>
+      <div class="col-md-10">
+        <div class="row">
+          <div class="col-md-3 feature-number-blk">
+            <center>
+              <div class="feature-number-lbl">1</div>
+            </center>
+          </div>
+          <div class="col-md-3 feature-number-blk">
+            <center>
+              <div class="feature-number-lbl">2</div>
+            </center>
+          </div>
+          <div class="col-md-3 feature-number-blk">
+            <center>
+              <div class="feature-number-lbl">3</div>
+            </center>
+          </div>
+          <div class="col-md-3 feature-number-blk">&nbsp;</div>
+        </div>
+        <div class="row">
+          <div class="col-md-3 top-feature-block">
+            <div class="feature-top1-lbl">Feature 1</div>
+          </div>
+          <div class="col-md-3 top-feature-block">
+            <div class="feature-top2-lbl">Feature 2</div>
+          </div>
+          <div class="col-md-3 top-feature-block">
+            <div class="feature-top3-lbl">Feature 3</div>
+          </div>
+          <div class="col-md-3 top-feature-block">
+            <a href"#" class="next-top3-button">Next&nbsp;&nbsp;<i class="glyphicon glyphicon-arrow-right"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
