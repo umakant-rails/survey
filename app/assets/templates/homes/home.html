@@ -15,12 +15,12 @@
       <div class="non-interested-circle" dd-drop-target="true" name="non-interested-circle">
         <!--<span ng-repeat="feature in [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]" class="non-interested-feature">yyyyyyyyy</span>-->
         <span ng-repeat="feature in nonInterested" class="non-interested-feature">
-          {{feature.title}}
+          {{feature.title}} <a class="feature-close">&times;</a>
         </span>
         <div class="interested-circle" dd-drop-target="true" name="interested-circle">
           <!--<span ng-repeat="feature in [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]" class="interested-feature">zzzzzz</span>-->
           <span ng-repeat="feature in interested" class="interested-feature">
-            {{feature.title}}
+            {{feature.title}} <a class="feature-close">&times;</a>
           </span>
         </div>
       </div>

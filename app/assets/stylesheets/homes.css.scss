@@ -18,6 +18,7 @@
     border-radius: 4px;
     margin: 4px 15px;
     padding: 5px 10px;
+    cursor: pointer;
   }
 }
 
@@ -43,6 +44,18 @@
 
 .non-interested-feature{
   max-width: 100px;
+}
+.feature-close{
+  color: #000000;
+  float: right;
+  font-size: 21px;
+  font-weight: bold;
+  line-height: 1;
+  margin-right: -2px;
+  margin-top: -2px;
+  opacity: 0.2;
+  text-shadow: 0 1px 0 #ffffff;
+  cursor: pointer;
 }
 
 .non-interested-circle:before, .non-interested-circle:after{
