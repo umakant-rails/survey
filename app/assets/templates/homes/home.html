@@ -1,13 +1,22 @@
 <div class="row" style="margin-top:-20px;">
   <div class="col-lg-2 lft-feature-bar">
-    <div ng-repeat="feature in features" class="feature-lbl">
+    <div ng-repeat="feature in features" class="feature-lbl" dd-draggable="true" featureid="{{feature.id}}">
       {{feature.title}}
     </div>
   </div>
   <div class="col-lg-10 rght-feature-bar">
-    <div class="circle-contaner">
-      <div class="non-interested-circle">
-        <div class="interested-circle"></div>
+    <div class="circle-contaner" id="dropbox">
+      <div class="non-interested-circle" dd-drop-target="true" name="non-interested-circle">
+        <!--<span ng-repeat="feature in [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]" class="non-interested-feature">yyyyyyyyy</span>-->
+        <span ng-repeat="feature in nonInterested" class="non-interested-feature">
+          {{feature.title}}
+        </span>
+        <div class="interested-circle" dd-drop-target="true" name="interested-circle">
+          <!--<span ng-repeat="feature in [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]" class="interested-feature">zzzzzz</span>-->
+          <span ng-repeat="feature in interested" class="interested-feature">
+            {{feature.title}}
+          </span>
+        </div>
       </div>
     </div>
     <div class="next-button">Next&nbsp;&nbsp;<i class="glyphicon glyphicon-arrow-right"></i></div>

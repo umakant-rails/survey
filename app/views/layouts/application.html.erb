@@ -12,15 +12,15 @@
     <!--<div ng-include="'layouts/navbar.html'"></div>-->
     <% if notice %>
       <div class="notice">
-        <p class="alert alert-success"><a class="close" data-dismiss="alert">&times;</a><%= notice %></p>
+        <p class="alert alert-success growl-notification"><a class="close" data-dismiss="alert">&times;</a><%= notice %></p>
       </div>
     <% end %>
     <% if alert %>
       <div class="alert">
-        <p class="alert alert-danger"><a class="close" data-dismiss="alert">&times;</a><%= alert %></p>
+        <p class="alert alert-danger growl-notification"><a class="close" data-dismiss="alert">&times;</a><%= alert %></p>
       </div>
     <% end %>
-    <div growl class="growl-notification"></div>
+    <div growl class="growl-notification"><%= alert %></div>
     <%= yield %>
   </div>
 </body>
