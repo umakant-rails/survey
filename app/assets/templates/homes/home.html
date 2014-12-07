@@ -1,7 +1,13 @@
 <div class="row" style="margin-top:-20px;">
   <div class="col-lg-2 lft-feature-bar">
-    <div ng-repeat="feature in features" class="feature-lbl" dd-draggable="true" featureid="{{feature.id}}">
+    <div class="feature-hdr-lbl">
+      Drage these feature onto the two circles
+    </div>
+    <div ng-if="features.length > 0" ng-repeat="feature in features" class="feature-lbl" dd-draggable="true" featureid="{{feature.id}}">
       {{feature.title}}
+    </div>
+    <div ng-if="features.length == 0" class="feature-lbl">
+      There is no more features.
     </div>
   </div>
   <div class="col-lg-10 rght-feature-bar">

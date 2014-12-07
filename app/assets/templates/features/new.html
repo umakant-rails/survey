@@ -1,7 +1,7 @@
 <div class="row">
   <div class="col-lg-1"></div>
   <div class="col-lg-10 signup-block-hdr">
-    <center><strong>Create Survey Questions</strong></center>
+    <strong>Create Survey Questions</strong>
     <div class="clear"></div>
     <div class="bdr"></div>
     <div class="clear"></div>
@@ -10,12 +10,15 @@
 </div>
 <div class="row">
   <div class="col-lg-1"></div>
-  <div class="col-lg-10">
+  <div class="col-lg-10" ng-if="numbersOfFeature != 0">
     <div class="col-lg-6" style="margin-bottom:5px;" ng-repeat="index in numbersOfFeature">
       <div>Feature {{index}}</div>
       <div class="clearboth"></div>
       <input type="text" id="question_{{index}}" class="survey_questions form-control" value="" />
     </div>
+  </div>
+  <div class="col-lg-10" ng-if="numbersOfFeature == 0">
+    You have created all the 15 features.
   </div>
   <div class="col-lg-1"></div>
 </div>
