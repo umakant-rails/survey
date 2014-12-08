@@ -3,11 +3,11 @@
     <div class="feature-hdr-lbl">
       Selected top three features
     </div>
-    <div ng-if="interestedFeature.length > 0" ng-repeat="feature in interestedFeature" class="feature-lbl" dd-draggable="true" featureid="{{feature.id}}">
-      {{feature.title}}
+    <div ng-if="interestedFeature.length > 0" ng-repeat="feature in interestedFeature" class="feature-lbl" top3-draggable="true" featureid="{{feature.id}}">
+      <span>{{feature.title}}</span>
     </div>
     <div ng-if="interestedFeature.length == 0" class="feature-lbl">
-      There is no more interested features.
+      There ino more interested features.
     </div>
   </div>
   <div class="col-lg-10 refine-features-block">
@@ -43,13 +43,22 @@
         </div>
         <div class="row">
           <div class="col-md-3 top-feature-block">
-            <div class="feature-top1-lbl">Feature 1</div>
+            <div ng-if="topFirstFeature.length === 0" class="feature-top1-lbl"
+              name="interested-box-first" top3-drop-target>Feature 1</div>
+            <div ng-if="topFirstFeature.length !== 0" class="feature-top1-lbl"
+              name="interested-box-first" top3-drop-target>{{topFirstFeature[0].title}}</div>
           </div>
           <div class="col-md-3 top-feature-block">
-            <div class="feature-top2-lbl">Feature 2</div>
+            <div ng-if="topSecondFeature.length === 0" class="feature-top2-lbl"
+              name="interested-box-second" top3-drop-target >Feature 2</div>
+            <div ng-if="topSecondFeature.length !== 0" class="feature-top2-lbl"
+              name="interested-box-second" top3-drop-target >{{topSecondFeature[0].title}}</div>
           </div>
           <div class="col-md-3 top-feature-block">
-            <div class="feature-top3-lbl">Feature 3</div>
+            <div  ng-if="topThirdFeature.length === 0"  class="feature-top3-lbl" name="interested-box-third"
+            top3-drop-target>Feature 3</div>
+            <div  ng-if="topThirdFeature.length !== 0"  class="feature-top3-lbl"
+              name="interested-box-third" top3-drop-target>{{topThirdFeature[0].title}}</div>
           </div>
           <div class="col-md-3 top-feature-block">
             <a href"#" class="next-top3-button">Next&nbsp;&nbsp;<i class="glyphicon glyphicon-arrow-right"></i></a>

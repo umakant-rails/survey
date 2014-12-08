@@ -4,7 +4,7 @@ surveyApp.directive("ddDraggable", function () {
     link: function(scope, element, attributes, ctlr) {
       element.attr("draggable", true);
       element.bind("dragstart", function(eventObject) {
-        eventObject.originalEvent.dataTransfer.setData("text", attributes.featureid);
+        eventObject.originalEvent.dataTransfer.setData("textFeatureId", attributes.featureid);
       });
     }
   };
@@ -44,12 +44,67 @@ surveyApp.directive("ddDropTarget", function () {
       element.bind("drop", function(eventObject) {
         eventObject.preventDefault();
         var dropBoxName = angular.element(this).attr('name')
-        var txt = eventObject.originalEvent.dataTransfer.getData("text");
+        var textFeatureId = eventObject.originalEvent.dataTransfer.getData("textFeatureId");
         if(dropBoxName === 'interested-circle'){
-          ctrl.moveToInterestedBox(parseInt(txt), dropBoxName);
+          ctrl.moveToInterestedBox(parseInt(textFeatureId), dropBoxName);
         } else{
-          ctrl.moveToNonInterestedBox(parseInt(txt), dropBoxName);
+          ctrl.moveToNonInterestedBox(parseInt(textFeatureId), dropBoxName);
         }
+      });
+    }
+  };
+});
+
+surveyApp.directive("top3Draggable", function () {
+  return {
+    restrict: "A",
+    link: function(scope, element, attributes, ctlr) {
+      element.attr("draggable", true);
+      element.bind("dragstart", function(eventObject) {
+        eventObject.originalEvent.dataTransfer.setData("textFeatureId", attributes.featureid);
+      });
+    }
+  };
+});
+
+surveyApp.directive("top3DropTarget", function () {
+  return {
+    restrict: "A",
+    controller: ['$scope', function($scope){
+      this.findSelectedFeature = function(feature_id, interestedPosition){
+        for (var index = 0; index < $scope.interestedFeature.length; index++) {
+          var feature = $scope.interestedFeature[index];
+          if (feature.id == feature_id) {
+            if(interestedPosition === "interested-box-first"){
+              feature.interestedPosition = 1;
+              $scope.topFirstFeature.push(feature);
+              $scope.interestedFeature.splice(index,1);
+              $scope.$apply();
+            } else if(interestedPosition === "interested-box-second"){
+              feature.interestedPosition = 2;
+              $scope.topSecondFeature.push(feature);
+              $scope.interestedFeature.splice(index,1);
+              $scope.$apply();
+            }else if(interestedPosition === "interested-box-third"){
+              feature.interestedPosition = 3;
+              $scope.topThirdFeature.push(feature);
+              $scope.interestedFeature.splice(index,1);
+              $scope.$apply();
+            }
+            break;
+          }
+        }
+      }
+    }],
+    link: function (scope, element, attributes, ctrl) {
+      element.bind("dragover", function(eventObject){
+        eventObject.preventDefault();
+      });
+      element.bind("drop", function(eventObject) {
+        eventObject.preventDefault();
+        var dropBoxName = angular.element(this).attr('name')
+        var textFeatureId = eventObject.originalEvent.dataTransfer.getData("textFeatureId");
+        ctrl.findSelectedFeature(parseInt(textFeatureId), dropBoxName);
       });
     }
   };
