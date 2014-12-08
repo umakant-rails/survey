@@ -109,3 +109,45 @@ surveyApp.directive("top3DropTarget", function () {
     }
   };
 });
+
+surveyApp.directive("resetInterstedNonInterestedElement", function () {
+  return{
+    controller: ['$scope', function($scope){
+      this.resetElementFromInteresedList = function(featureId){
+        for (var index = 0; index < $scope.interestedFeature.length; index++) {
+          var feature = $scope.interestedFeature[index];
+          if (feature.id == featureId) {
+            if($scope.features === undefined){$scope.features = []}
+            $scope.features.push(feature);
+            $scope.interestedFeature.splice(index, 1);
+          }
+        }
+        $scope.$apply();
+      },
+      this.resetElementFromNonInteresedList = function(featureId){
+        for (var index = 0; index < $scope.nonInterestedFeature.length; index++) {
+          var feature = $scope.nonInterestedFeature[index];
+          if (feature.id == featureId) {
+            if($scope.features === undefined){$scope.features = []}
+            $scope.features.push(feature);
+            $scope.nonInterestedFeature.splice(index, 1);
+          }
+        }
+        $scope.$apply();
+      }
+    }],
+    link: function(scope, element, attributes, ctrl){
+      element.on('click', function(){
+        var featureId = attributes['featureId'];
+        var name = attributes['name'];
+        if(name == "interested-circle-element") {
+          ctrl.resetElementFromInteresedList(featureId);
+          element.parent().remove();
+        } else {
+          ctrl.resetElementFromNonInteresedList(featureId);
+          element.parent().remove();
+        }
+      });
+    }
+  }
+});
