@@ -1,4 +1,4 @@
-function FeaturesNewCtrl($scope, featureService, growl) {
+function FeaturesNewCtrl($scope, $location, featureService, growl) {
 
   $scope.init = function(){
     var numbersOfFeature = [];
@@ -23,6 +23,7 @@ function FeaturesNewCtrl($scope, featureService, growl) {
         if(response.success) {
           $scope.features = response.features;
           growl.addSuccessMessage(response.message);
+          $location.path('/')
         } else {
           growl.addErrorMessage(response.message);
         }
@@ -34,4 +35,4 @@ function FeaturesNewCtrl($scope, featureService, growl) {
 
  $scope.init();
 }
-surveyApp.controller('FeaturesNewCtrl', ['$scope', 'featureService', 'growl', FeaturesNewCtrl]);
+surveyApp.controller('FeaturesNewCtrl', ['$scope', '$location', 'featureService', 'growl', FeaturesNewCtrl]);

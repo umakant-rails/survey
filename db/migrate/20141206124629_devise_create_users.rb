@@ -33,6 +33,7 @@ class DeviseCreateUsers < ActiveRecord::Migration
       t.string :users, :first_name
       t.string :users, :last_name
       t.string :users, :username
+      t.integer :users, :role_id
       t.timestamps
     end
 

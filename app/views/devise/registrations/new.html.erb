@@ -54,6 +54,16 @@
       <div class="spacer"></div>
       <div class="col-lg-2"></div>
       <div class="col-lg-8">
+        <strong>Role</strong>
+        <div class="clear"></div>
+        <%= f.hidden_field :role_id, value: "2", class: "form-control" %>
+        <%= f.select :role_id, options_for_select({"user" => 2}), {}, {:class => 'form-control', :disabled => 'disabled'} %>
+      </div>
+      <div class="col-lg-2"></div>
+      <div class="clearboth"></div>
+      <div class="spacer"></div>
+      <div class="col-lg-2"></div>
+      <div class="col-lg-8">
         <%= f.submit "Sign up", class: 'btn btn-primary form-control' %>
         <div class="clear"></div>
         <%= render "devise/shared/links" %>

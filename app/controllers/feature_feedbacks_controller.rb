@@ -6,11 +6,11 @@ class FeatureFeedbacksController < ApplicationController
     begin
       ActiveRecord::Base.transaction  do
         params[:interested_feature].each do | feature |
-          params[:feature_feedback] = {feature_id: feature[:id], interested: true, interested_priority: feature[:interestedPosition]}
+          params[:feature_feedback] = {feature_id: feature[:id], interested: true, interested_priority: feature[:interestedPosition], user_id: current_user.id}
           FeatureFeedback.create!(feature_feedback_params)
         end
         params[:non_interested_feature].each do | feature |
-          params[:feature_feedback] = {feature_id: feature[:id], not_interested: true}
+          params[:feature_feedback] = {feature_id: feature[:id], not_interested: true, user_id: current_user.id}
           FeatureFeedback.create!(feature_feedback_params)
         end
       end
@@ -56,7 +56,7 @@ class FeatureFeedbacksController < ApplicationController
       temp_hash[:not_interested] = non_interested.blank? ? 0 : non_interested.size
       features_feedback[features_feedback.size] = temp_hash
     end
-    visited_user = current_user.features.joins(:feature_feedbacks).map(&:user_id).uniq.size
+    visited_user = current_user.features.joins(:feature_feedbacks).select("feature_feedbacks.user_id user_id").map(&:user_id).uniq.size
     respond_to do |format|
       format.html
       format.json { render json: {:success => true, :features_feedback => features_feedback,

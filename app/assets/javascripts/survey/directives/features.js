@@ -72,7 +72,7 @@ surveyApp.directive("top3DropTarget", function () {
     restrict: "A",
     controller: ['$scope', function($scope){
       this.findSelectedFeature = function(feature_id, interestedPosition){
-        for (var index = 0; index < $scope.interestedFeature.length; index++) {
+        for(var index = 0; index < $scope.interestedFeature.length; index++) {
           var feature = $scope.interestedFeature[index];
           if (feature.id == feature_id) {
             if(interestedPosition === "interested-box-first"){
@@ -81,6 +81,7 @@ surveyApp.directive("top3DropTarget", function () {
               $scope.interestedFeature.splice(index,1);
               $scope.$apply();
             } else if(interestedPosition === "interested-box-second"){
+
               feature.interestedPosition = 2;
               $scope.topSecondFeature.push(feature);
               $scope.interestedFeature.splice(index,1);
@@ -166,13 +167,13 @@ surveyApp.directive("resetTop3Feature", function () {
           var feature = angular.copy($scope.topSecondFeature[0]);
           feature.interestedPosition = null;
           $scope.interestedFeature.push(feature);
-          $scope.topSecondFeature = [];
+          $scope.topSecondFeature.splice(0,1);
           $scope.$apply();
         } else {
           var feature = angular.copy($scope.topThirdFeature[0]);
           feature.interestedPosition = null;
           $scope.interestedFeature.push(feature);
-          $scope.topThirdFeature = [];
+          $scope.topThirdFeature.splice(0,1);
           $scope.$apply();
         }
       }

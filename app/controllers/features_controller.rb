@@ -2,7 +2,7 @@ class FeaturesController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    features = current_user.features
+    features = Feature.all
     nubmers_of_feature = Feature::NUMBER_OF_FEATURE - features.length
     respond_to do |format|
       format.html
