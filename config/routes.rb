@@ -11,7 +11,9 @@ Rails.application.routes.draw do
   }
   resources :homes
   resources :features
-  resources :feature_feedbacks
+  resources :feature_feedbacks do
+    get :feature_feedback_report, on: :collection
+  end
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

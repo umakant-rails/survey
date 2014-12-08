@@ -11,5 +11,9 @@ surveyApp.config(['$routeProvider', '$locationProvider', function ($routeProvide
       templateUrl: 'features/feedback_completed.html',
       controller: 'FeaturesFeedbackComptetedCtrl'
   });
+  $routeProvider.when('/features/feedback_report', {
+      templateUrl: 'features/feedback_report.html',
+      controller: 'FeaturesFeedbackReportCtrl'
+  });
 }]);
 

@@ -1,0 +1,38 @@
+<div class="row">
+  <div class="col-lg-2"></div>
+  <div class="col-lg-8">
+    <table class="row table table-striped table-bordered report-table">
+      <thead>
+        <tr>
+          <th class="col-lg-12 table-top-row-txt" colspan="7" style="text-align:left;">{{visited_user}} People have completed your survey</th>
+        </tr>
+        <tr>
+          <th class="col-lg-4">Feature</th>
+          <th class="col-lg-1"></th>
+          <th class="col-lg-2">Interesting</th>
+          <th class="col-lg-2">Not Interesting</th>
+          <th class="col-lg-1">1st</th>
+          <th class="col-lg-1">2nd</th>
+          <th class="col-lg-1" style="min-width: 65px;">3rd</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="feature in features_feedback">
+          <td class="col-lg-4">{{feature.title}}</td>
+          <td class="col-lg-1"></td>
+          <td class="col-lg-2" ng-if="feature.interested != 0">{{feature.interested}}</td>
+          <td class="col-lg-2" ng-if="feature.interested == 0">-</td>
+          <td class="col-lg-3" ng-if="feature.not_interested != 0">{{feature.not_interested}}</td>
+          <td class="col-lg-3" ng-if="feature.not_interested == 0">-</td>
+          <td class="col-lg-1" ng-if="feature.first != 0">{{feature.first}}</td>
+          <td class="col-lg-1" ng-if="feature.first == 0">-</td>
+          <td class="col-lg-1" ng-if="feature.second != 0">{{feature.second}}</td>
+          <td class="col-lg-1" ng-if="feature.second == 0">-</td>
+          <td class="col-lg-1" ng-if="feature.third != 0">{{feature.third}}</td>
+          <td class="col-lg-1" ng-if="feature.third == 0">-</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="col-lg-1"></div>
+</div>
