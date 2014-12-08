@@ -5,4 +5,5 @@ class User < ActiveRecord::Base
     :recoverable, :rememberable, :trackable, :validatable, :confirmable
   has_many :features
   has_many :feature_feedbacks
+  has_many :survey_profiles
 end
