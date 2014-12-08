@@ -41,6 +41,11 @@
   color: black;
   margin-left: -25px;
   margin-top: 270px;
+  &:hover{
+    border: 2px solid, #000000;;
+    color: #000000;
+    text-decoration: none !important;
+  }
 }
 
 .non-interested-feature{
@@ -298,7 +303,13 @@
   float: left;
   padding: 14px 60px;
   margin-top: 18px;
+  &:hover{
+    border: 2px solid, #000000;;
+    color: #000000;
+    text-decoration: none !important
+  }
 }
+
 
 .top-feature-block{
   padding-left: 2px;
@@ -313,4 +324,11 @@
   margin: 18px -10px;
   padding: 16px 15px;
   width: 100%
+}
+
+.thankyou-box{
+  font-size: 25px;
+  font-weight: bold;
+  margin-top: 80px;
+  text-align: center;
 }

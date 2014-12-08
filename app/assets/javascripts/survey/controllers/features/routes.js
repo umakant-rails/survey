@@ -7,5 +7,9 @@ surveyApp.config(['$routeProvider', '$locationProvider', function ($routeProvide
       templateUrl: 'features/refine_features.html',
       controller: 'FeaturesRefineCtrl'
   });
+  $routeProvider.when('/features/feedback_completed', {
+      templateUrl: 'features/feedback_completed.html',
+      controller: 'FeaturesFeedbackComptetedCtrl'
+  });
 }]);
 

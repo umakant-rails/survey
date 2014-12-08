@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   }
   resources :homes
   resources :features
+  resources :feature_feedbacks
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  interested: false
+  not_interested: false
+  first: false
+  second: false
+  third: false
+
+two:
+  interested: false
+  not_interested: false
+  first: false
+  second: false
+  third: false

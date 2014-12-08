@@ -11,19 +11,19 @@ class FeaturesController < ApplicationController
   end
 
   def create
-    is_features_crated = false;
+    is_features_created = false;
     begin
       ActiveRecord::Base.transaction  do
         params[:features].each do | feature |
           params[:feature] = feature;
           current_user.features.create!(feature_params)
-          is_features_crated = true
+          is_features_created = true
         end
       end
     rescue Exception => exp
-      is_features_crated = false
+      is_features_created = false
     end
-    if is_features_crated
+    if is_features_created
       respond_to do |format|
         format.html
         format.json { render json: {:success => true, :message => "Successfully created features"}}
