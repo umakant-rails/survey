@@ -151,3 +151,37 @@ surveyApp.directive("resetInterstedNonInterestedElement", function () {
     }
   }
 });
+
+surveyApp.directive("resetTop3Feature", function () {
+  return{
+    controller: ['$scope', function($scope){
+      this.resetTop3Feature = function(name){
+        if(name == "first-top-feature"){
+          var feature = $scope.topFirstFeature[0];
+          feature.interestedPosition = null;
+          $scope.interestedFeature.push(feature);
+          $scope.topFirstFeature.splice(0,1);
+          $scope.$apply();
+        } else if(name == "second-top-feature") {
+          var feature = angular.copy($scope.topSecondFeature[0]);
+          feature.interestedPosition = null;
+          $scope.interestedFeature.push(feature);
+          $scope.topSecondFeature = [];
+          $scope.$apply();
+        } else {
+          var feature = angular.copy($scope.topThirdFeature[0]);
+          feature.interestedPosition = null;
+          $scope.interestedFeature.push(feature);
+          $scope.topThirdFeature = [];
+          $scope.$apply();
+        }
+      }
+    }],
+    link: function(scope, element, attributes, ctrl){
+      element.on('click', function(){
+        var name = attributes['name'];
+        ctrl.resetTop3Feature(name);
+      });
+    }
+  }
+});
