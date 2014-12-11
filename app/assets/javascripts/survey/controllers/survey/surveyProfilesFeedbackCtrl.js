@@ -11,12 +11,12 @@ function SurveyProfilesFeedbackCtrl($scope, $location, $routeParams, featureServ
     featureFactory.setInterestedFeature($scope.interestedFeature);
     featureFactory.setNonInterestedFeature($scope.nonInterestedFeature);
     featureFactory.setSurveyProfile($scope.survey_profile);
-    $location.path('/survey_profile/' + survey_profile_id + '/features/refine_features');
+    $location.path('/survey_profiles/' + survey_profile_id + '/features/refine_features');
   }
 
   $scope.truncate = function(str){
-    if(str.length > 17){
-      return str.substring(0, 14) + '...';
+    if(str.length > 16){
+      return str.substring(0, 13) + '...';
     } else {
       return str;
     }

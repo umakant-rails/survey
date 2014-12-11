@@ -17,11 +17,11 @@
       </td>
       <td class="col-lg-6">
         <!-- owner can'nt submit feedback report -->
-        <a ng-if="current_user.id != surveyProfile.user_id" href="#/survey_profile/{{surveyProfile.id}}/feedbacks" class="btn btn-sm btn-primary">
+        <a ng-if="current_user.id != surveyProfile.user_id" href="#/survey_profiles/{{surveyProfile.id}}/feedbacks" class="btn btn-sm btn-primary">
           Submit Feedback
         </a>
         <!-- either user is owner or admin then user allowed to see feedback report -->
-        <a ng-if="current_user.role_id == 1 || current_user.id == surveyProfile.user_id" href="#/survey_profile/{{surveyProfile.id}}/features/feedback_report" class="btn btn-sm btn-primary">
+        <a ng-if="current_user.role_id == 1 || current_user.id == surveyProfile.user_id" href="#/survey_profiles/{{surveyProfile.id}}/features/feedback_report" class="btn btn-sm btn-primary">
           Feedback Report
         </a>
         <a ng-if="current_user.role_id == 1 || current_user.id == surveyProfile.user_id" href="#/survey_profiles/{{surveyProfile.id}}/features/new" class="btn btn-sm btn-primary">Add Features</a>
