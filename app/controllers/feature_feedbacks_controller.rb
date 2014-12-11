@@ -1,16 +1,16 @@
 class FeatureFeedbacksController < ApplicationController
-  before_action :authenticate_user!
+  before_filter :authenticate_user!, :except => [:create]
 
   def create
     is_feedback_submitted = false
     begin
       ActiveRecord::Base.transaction  do
         params[:interested_feature].each do | feature |
-          params[:feature_feedback] = {feature_id: feature[:id], interested: true, interested_priority: feature[:interestedPosition], user_id: current_user.id}
+          params[:feature_feedback] = {feature_id: feature[:id], interested: true, interested_priority: feature[:interestedPosition]}
           FeatureFeedback.create!(feature_feedback_params)
         end
         params[:non_interested_feature].each do | feature |
-          params[:feature_feedback] = {feature_id: feature[:id], not_interested: true, user_id: current_user.id}
+          params[:feature_feedback] = {feature_id: feature[:id], not_interested: true}
           FeatureFeedback.create!(feature_feedback_params)
         end
       end
