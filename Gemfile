@@ -37,7 +37,7 @@ gem 'spring',        group: :development
 # gem 'capistrano-rails', group: :development
 
 # Use debugger
-# gem 'debugger', group: [:development, :test]
+#gem 'debugger2', :git => "git://github.com/ko1/debugger2.git", group: [:development, :test]
 gem 'devise'
 gem 'bower-rails'
 gem 'angular-rails-templates'
