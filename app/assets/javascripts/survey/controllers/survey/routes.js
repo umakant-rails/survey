@@ -7,7 +7,11 @@ surveyApp.config(['$routeProvider', '$locationProvider', function ($routeProvide
     templateUrl: 'survey_profiles/index.html',
     controller: 'SurveyProfilesIndexCtrl'
   });
-  $routeProvider.when('/survey_profile/:id/feedbacks', {
+  $routeProvider.when('/survey_profiles/:id', {
+    templateUrl: 'survey_profiles/show.html',
+    controller: 'SurveyProfilesShowCtrl'
+  });
+  $routeProvider.when('/survey_profiles/:id/feedbacks', {
     templateUrl: 'survey_profiles/feedbacks.html',
     controller: 'SurveyProfilesFeedbackCtrl'
   });

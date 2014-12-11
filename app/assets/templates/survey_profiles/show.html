@@ -1,0 +1,30 @@
+<div class="row" style="margin-top:20px;"></div>
+<div class="row">
+  <div class="col-lg-2"></div>
+  <div class="col-lg-8">
+    <div class="row survey-profile-hdr">
+      {{survey_profile.title}}
+      <div class="clear"></div>
+    </div>
+    <div class="row bdr"></div>
+    <div class="clear"></div>
+    <div class="row survey-profile-descrition">
+      {{survey_profile.description}}
+      <div class="clear"></div>
+    </div>
+    <div class="row survey-profile-feature-hdr">
+      Features :
+      <div class="clear"></div>
+    </div>
+    <div class="row survey-profile-feature-lst bdr">
+      <div class="col-lg-6" ng-repeat="feature in features">
+        {{$index + 1}}.&nbsp;&nbsp;&nbsp;{{feature.title}}
+      </div>
+    </div>
+    <div ng-if="features.length < 15 " class="row note-row">
+       <strong>Note:</strong> A Survey profile can have at most 15 features. Now you have created {{features.length}} features till now. You can create {{remaining_features_count}} more features.
+    </div>
+  </div>
+  <div class="col-lg-1"></div>
+</div>
+

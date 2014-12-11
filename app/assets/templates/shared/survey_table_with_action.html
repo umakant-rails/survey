@@ -11,7 +11,7 @@
   <tbody>
     <tr ng-if="survey_profiles !== undefined || survey_profiles.length != 0" ng-repeat="survey_profile in survey_profiles">
       <td class="col-lg-6">
-        <a  href="javascript:void(0);">
+        <a  href="#/survey_profiles/{{survey_profile.id}}">
           {{survey_profile.title}}
         </a>
       </td>

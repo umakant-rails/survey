@@ -25,6 +25,17 @@ class SurveyProfilesController < ApplicationController
     end
   end
 
+  def show
+    survey_profile = SurveyProfile.where(:id => params[:id]).first
+    features = survey_profile.features
+    remaining_features_count = Feature::NUMBER_OF_FEATURE - features.length
+    respond_to do |format|
+      format.html
+      format.json { render json: {:success => true, :survey_profile => survey_profile,
+        :remaining_features_count => remaining_features_count, :features => features}}
+    end
+  end
+
   private
     def survey_profiles_params
       params[:survey_profile].permit( "title", "description");
