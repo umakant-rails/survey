@@ -81,6 +81,7 @@ surveyApp.directive("top3DropTarget", function () {
               $scope.interestedFeature.splice(index,1);
               $scope.$apply();
             } else if(interestedPosition === "interested-box-second"){
+
               feature.interestedPosition = 2;
               $scope.topSecondFeature.push(feature);
               $scope.interestedFeature.splice(index,1);

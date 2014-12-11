@@ -6,11 +6,11 @@ class FeatureFeedbacksController < ApplicationController
     begin
       ActiveRecord::Base.transaction  do
         params[:interested_feature].each do | feature |
-          params[:feature_feedback] = {feature_id: feature[:id], interested: true, interested_priority: feature[:interestedPosition]}
+          params[:feature_feedback] = {feature_id: feature[:id], interested: true, interested_priority: feature[:interestedPosition], user_id: current_user.id}
           FeatureFeedback.create!(feature_feedback_params)
         end
         params[:non_interested_feature].each do | feature |
-          params[:feature_feedback] = {feature_id: feature[:id], not_interested: true}
+          params[:feature_feedback] = {feature_id: feature[:id], not_interested: true, user_id: current_user.id}
           FeatureFeedback.create!(feature_feedback_params)
         end
       end
