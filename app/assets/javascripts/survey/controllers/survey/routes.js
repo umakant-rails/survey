@@ -11,6 +11,10 @@ surveyApp.config(['$routeProvider', '$locationProvider', function ($routeProvide
     templateUrl: 'survey_profiles/show.html',
     controller: 'SurveyProfilesShowCtrl'
   });
+  $routeProvider.when('/survey_profiles/:id/edit', {
+    templateUrl: 'survey_profiles/edit.html',
+    controller: 'SurveyProfilesEditCtrl'
+  });
   $routeProvider.when('/survey_profiles/:id/feedbacks', {
     templateUrl: 'survey_profiles/feedbacks.html',
     controller: 'SurveyProfilesFeedbackCtrl'

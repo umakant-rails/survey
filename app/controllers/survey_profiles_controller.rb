@@ -1,5 +1,5 @@
 class SurveyProfilesController < ApplicationController
-  before_filter :authenticate_user!, :only=>[:create]
+  before_filter :authenticate_user!, :only=>[:create, :edit, :update]
 
   def index
     survey_profiles = nil
@@ -32,13 +32,39 @@ class SurveyProfilesController < ApplicationController
     respond_to do |format|
       format.html
       format.json { render json: {:success => true, :survey_profile => survey_profile,
-        :remaining_features_count => remaining_features_count, :features => features}}
+        :remaining_features_count => remaining_features_count, :current_user => current_user, :features => features}}
+    end
+  end
+
+  def edit
+    survey_profile = SurveyProfile.where(:id => params[:id]).first
+    respond_to do |format|
+      format.html
+      format.json { render json: {:success => true, :survey_profile => survey_profile,
+        :current_user => current_user}}
+    end
+  end
+
+  def update
+    survey_profile = SurveyProfile.where(:id => params[:id]).first
+    if survey_profile.update_attributes(survey_profiles_params)
+      respond_to do |format|
+        format.html
+        format.json { render json: {:success => true, :survey_profile => survey_profile,
+          :current_user => current_user, :message => "Successfully update survey profile"}}
+      end
+    else
+      respond_to do |format|
+        format.html
+        format.json { render json: {:success => false, :survey_profile => survey_profile,
+          :current_user => current_user, :message => "Your action update survey profile is failed"}}
+      end
     end
   end
 
   private
     def survey_profiles_params
-      params[:survey_profile].permit( "title", "description");
+      params[:survey_profile].permit( "id", "title", "description", "user_id", "created_at", "updated_at");
     end
 
 end

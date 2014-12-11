@@ -2,14 +2,19 @@
 <div class="row">
   <div class="col-lg-2"></div>
   <div class="col-lg-8">
-    <div class="row survey-profile-hdr">
-      {{survey_profile.title}}
+    <div class="row">
+      <div class="col-md-10 survey-profile-hdr">
+        {{surveyProfile.title}}
+      </div>
+      <div class="col-md-2">
+        <a href="#/survey_profiles/{{surveyProfile.id}}/edit" class="pull-right btn btn-primary">Edit Survey Profile</a>
+      </div>
       <div class="clear"></div>
     </div>
     <div class="row bdr"></div>
     <div class="clear"></div>
     <div class="row survey-profile-descrition">
-      {{survey_profile.description}}
+      {{surveyProfile.description}}
       <div class="clear"></div>
     </div>
     <div class="row survey-profile-feature-hdr">
