@@ -14,6 +14,13 @@ function SurveyProfilesFeedbackCtrl($scope, $location, $routeParams, featureServ
     $location.path('/survey_profile/' + survey_profile_id + '/features/refine_features');
   }
 
+  $scope.truncate = function(str){
+    if(str.length > 17){
+      return str.substring(0, 14) + '...';
+    } else {
+      return str;
+    }
+  }
   $scope.featrueIndex();
 }
 

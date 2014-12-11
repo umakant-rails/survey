@@ -9,6 +9,7 @@
 body{
   /*background-color: #D6D6D6;*/
 }
+
 .clear{
   margin-bottom: 5px;
   clear: both;
@@ -24,6 +25,14 @@ body{
 
 .bdr{
   border-bottom: 1px solid lightgray;
+}
+
+.floatL{
+  float: left;
+}
+
+.floatR{
+  float: right;
 }
 
 .growl-notification{

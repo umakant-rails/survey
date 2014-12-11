@@ -48,20 +48,18 @@
   }
 }
 
-.non-interested-feature{
-  max-width: 100px;
-}
+
 .feature-close{
   color: #000000;
+  cursor: pointer;
   float: right;
-  font-size: 21px;
+  font-size: 18px;
   font-weight: bold;
   line-height: 1;
   margin-right: -2px;
-  margin-top: -2px;
+  margin-top: -3px;
   opacity: 0.2;
   text-shadow: 0 1px 0 #ffffff;
-  cursor: pointer;
 }
 
 .non-interested-circle:before, .non-interested-circle:after{
@@ -85,7 +83,7 @@
     float: left;
     max-width: 120px;
     min-width: 120px;
-    padding: 8px 10px;
+    padding: 8px 5px;
     word-wrap: break-word;
     font-size: 12px;
   }
