@@ -1,7 +1,7 @@
 function SurveyProfilesIndexCtrl($scope, $location, surveyProfileService, featureFactory, growl) {
   $scope.featrueIndex = function(){
     surveyProfileService.all({}, function(response){
-      $scope.survey_profiles = response.survey_profiles;
+      $scope.surveyProfiles = response.survey_profiles;
       $scope.current_user = response.current_user;
     });
   },
@@ -12,12 +12,12 @@ function SurveyProfilesIndexCtrl($scope, $location, surveyProfileService, featur
       surveyProfileService.delete({id: survey_profile_id}, function(response){
         if(response.success){
           var surveyProfiles = []
-          angular.forEach($scope.survey_profiles, function(surveyProfile, index){
+          angular.forEach($scope.surveyProfiles, function(surveyProfile, index){
             if(surveyProfile.id !== survey_profile_id){
               surveyProfiles.push(surveyProfile);
             }
           });
-          $scope.survey_profiles = surveyProfiles;
+          $scope.surveyProfiles = surveyProfiles;
           growl.addSuccessMessage(response.message);
         } else {
           growl.addErrorMessage(response.message);

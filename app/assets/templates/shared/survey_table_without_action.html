@@ -9,17 +9,17 @@
     </tr>
   </thead>
   <tbody>
-    <tr ng-if="survey_profiles !== undefined && survey_profiles.length > 0" ng-repeat="survey_profile in survey_profiles">
+    <tr ng-if="surveyProfiles !== undefined && surveyProfiles.length > 0" ng-repeat="surveyProfile in surveyProfiles">
       <td class="col-lg-6">
-        <a href="#/survey_profiles/{{survey_profile.id}}">{{survey_profile.title}}</a>
+        <a href="#/survey_profiles/{{surveyProfile.id}}">{{surveyProfile.title}}</a>
       </td>
       <td class="col-lg-6">
-         <a href="#/survey_profiles/{{survey_profile.id}}/feedbacks" class="btn btn-sm btn-primary">
+         <a href="#/survey_profiles/{{surveyProfile.id}}/feedbacks" class="btn btn-sm btn-primary">
           Submit Feedback
         </a>
       </td>
     </tr>
-    <tr ng-if="survey_profiles === undefined || survey_profiles.length == 0">
+    <tr ng-if="surveyProfiles === undefined || surveyProfiles.length == 0">
       <td class="col-lg-12" colspan="2">
         <center>There is no survey profile.</center>
       </td>

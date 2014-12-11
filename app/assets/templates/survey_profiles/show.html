@@ -7,7 +7,7 @@
         {{surveyProfile.title}}
       </div>
       <div class="col-md-2">
-        <a href="#/survey_profiles/{{surveyProfile.id}}/edit" class="pull-right btn btn-primary">Edit Survey Profile</a>
+        <a ng-if="current_user.id != undefined" href="#/survey_profiles/{{surveyProfile.id}}/edit" class="pull-right btn btn-primary">Edit Survey Profile</a>
       </div>
       <div class="clear"></div>
     </div>

@@ -1,7 +1,7 @@
 function WelcomesIndexCtrl($scope, surveyProfileService, featureFactory) {
   $scope.welcomeIndex = function(){
     surveyProfileService.all({}, function(response){
-      $scope.survey_profiles = response.survey_profiles;
+      $scope.surveyProfiles = response.survey_profiles;
       $scope.current_user = response.current_user;
     });
   },

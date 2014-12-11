@@ -5,12 +5,12 @@ class FeatureFeedbacksController < ApplicationController
     is_feedback_submitted = false
     begin
       ActiveRecord::Base.transaction  do
-        params[:interested_feature].each do | feature |
+        params[:interested_feature] && params[:interested_feature].each do | feature |
           params[:feature_feedback] = {feature_id: feature[:id], interested: true, interested_priority: feature[:interestedPosition]}
           params[:feature_feedback][:user_id] = current_user.present? ? current_user.id : nil
           FeatureFeedback.create!(feature_feedback_params)
         end
-        params[:non_interested_feature].each do | feature |
+        params[:non_interested_feature] && params[:non_interested_feature].each do | feature |
           params[:feature_feedback] = {feature_id: feature[:id], not_interested: true}
           params[:feature_feedback][:user_id] = current_user.present? ? current_user.id : nil
           FeatureFeedback.create!(feature_feedback_params)
