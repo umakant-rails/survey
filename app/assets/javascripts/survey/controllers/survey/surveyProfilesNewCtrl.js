@@ -1,26 +1,5 @@
 function SurveyProfilesNewCtrl($scope, $location, surveyProfileService, growl) {
 
-  /*$scope.createFeatures = function(){
-    var features = [];
-    angular.forEach(angular.element(".survey_questions"), function(element){
-      var val = angular.element(element).val();
-      if(val !== ""){
-        features.push({title: val});
-      }
-    });
-    if(features.length > 0){
-      featureService.create({features: features}, function(response){
-        if(response.success) {
-          $scope.features = response.features;
-          growl.addSuccessMessage(response.message);
-        } else {
-          growl.addErrorMessage(response.message);
-        }
-      });
-    } else {
-       growl.addErrorMessage('please fill features first');
-    }
-  } */
   $scope.initSurveyProfile = function(){
     $scope.surveyProfile = {}
   }

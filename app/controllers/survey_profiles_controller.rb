@@ -62,6 +62,23 @@ class SurveyProfilesController < ApplicationController
     end
   end
 
+  def destroy
+    survey_profile = SurveyProfile.where(:id => params[:id]).first
+    if survey_profile.destroy
+      respond_to do |format|
+        format.html
+        format.json { render json: {:success => true, :survey_profile => survey_profile,
+          :current_user => current_user, :message => "Successfully delete survey profile"}}
+      end
+    else
+      respond_to do |format|
+        format.html
+        format.json { render json: {:success => false, :survey_profile => survey_profile,
+          :current_user => current_user, :message => "Your action delete survey profile is failed"}}
+      end
+    end
+  end
+
   private
     def survey_profiles_params
       params[:survey_profile].permit( "id", "title", "description", "user_id", "created_at", "updated_at");
