@@ -1,0 +1,13 @@
+<div class="row">
+  <div class="col-lg-2"></div>
+  <div class="col-lg-8">
+    <div class="row" ng-if="current_user.id !== undefined ">
+      <div ng-include="'shared/survey_table_with_action.html'"></div>
+    </div>
+    <div class="row" ng-if="current_user.id == undefined">
+      <div ng-include="'shared/survey_table_without_action.html'"></div>
+    </div>
+  </div>
+  <div class="col-lg-1"></div>
+</div>
+

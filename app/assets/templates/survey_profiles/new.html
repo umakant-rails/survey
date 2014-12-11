@@ -1,0 +1,39 @@
+<div class="row" style="margin-top:60px;"></div>
+<div class="row">
+  <div class="col-lg-2"></div>
+  <div class="col-lg-8">
+    <div class="row form-header">
+      Survey Profile Form
+    </div>
+    <div class="row">
+      <div class="col-lg-1"></div>
+      <div class="col-lg-2"> Title </div>
+      <div class="col-lg-8">
+        <input type="text" ng-model="surveyProfile.title" class="form-control" name="title" value=""/>
+      </div>
+      <div class="col-lg-1"></div>
+    </div>
+    <div class="clear"></div>
+    <div class="row">
+      <div class="col-lg-1"></div>
+      <div class="col-lg-2"> Description </div>
+      <div class="col-lg-8">
+        <textarea name="descirption"  ng-model="surveyProfile.description" class="survey-profile-txtarea"></textarea>
+      </div>
+      <div class="col-lg-1"></div>
+    </div>
+    <div class="clear"></div>
+    <div class="row">
+      <div class="col-lg-1"></div>
+      <div class="col-lg-2"></div>
+      <div class="col-lg-8">
+        <input type="button" ng-click="createSurveyProfile()" value="Create Survey Profile" name="create_survey_profile" class="btn btn-primary"/>
+      </div>
+      <div class="col-lg-1"></div>
+    </div>
+    <div class="clear"></div>
+    <div class="row bdr-bottom"></div>
+  </div>
+  <div class="col-lg-1"></div>
+</div>
+

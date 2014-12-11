@@ -7,13 +7,13 @@ surveyApp.config(['$routeProvider', '$locationProvider', function ($routeProvide
       templateUrl: 'homes/home.html',
       controller: 'HomesIndexCtrl'
     })*/
-    $routeProvider.when('homes/home', {
-      templateUrl: 'homes/home.html',
-      controller: 'HomesIndexCtrl'
+    $routeProvider.when('/welcomes', {
+      templateUrl: 'welcomes/welcome.html',
+      controller: 'WelcomeaIndexCtrl'
     });
     return $routeProvider.otherwise({
-      templateUrl: 'homes/home.html',
-      controller: 'HomesIndexCtrl'
+      templateUrl: 'welcomes/welcome.html',
+      controller: 'WelcomesIndexCtrl'
     })
 }]);
 

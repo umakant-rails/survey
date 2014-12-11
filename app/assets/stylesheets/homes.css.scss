@@ -83,8 +83,11 @@
     border: 1px solid #d3d3d3;
     border-radius: 3px;
     float: left;
+    max-width: 120px;
     min-width: 120px;
     padding: 8px 10px;
+    word-wrap: break-word;
+    font-size: 12px;
   }
   .non-interested-feature:before, .non-interested-feature:after{
     box-sizing: border-box;
@@ -185,13 +188,15 @@
   position: absolute;
   z-index: 0px;
   .interested-feature{
-    background-color: #EBEBEB;
+    background-color: #ebebeb;
     border: 1px solid #d3d3d3;
     border-radius: 3px;
     float: left;
+    font-size: 12px;
     min-width: 110px;
     padding: 4px 6px;
     position: relative;
+    word-wrap: break-word;
   }
   .interested-feature:before, .interested-feature:after{
     box-sizing: border-box;

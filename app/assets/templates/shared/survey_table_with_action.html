@@ -1,0 +1,32 @@
+<table class="row table table-striped table-bordered report-table">
+  <thead>
+    <tr>
+      <th class="col-lg-12" colspan="3" style="text-align:center;"><h4>SURVEY LIST</h4></th>
+    </tr>
+    <tr>
+      <th class="col-lg-7">Title</th>
+      <th class="col-lg-5">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat="survey_profile in survey_profiles">
+      <td class="col-lg-7">
+        <a ng-if="current_user.id != survey_profile.user_id" href="#/survey_profile/{{survey_profile.id}}/feedbacks">{{survey_profile.title}}</a>
+        <a ng-if="current_user.id == survey_profile.user_id"
+          href="#/survey_profile/{{survey_profile.id}}/features/feedback_report">
+          {{survey_profile.title}}
+        </a>
+      </td>
+      <td class="col-lg-5" ng-if="current_user.id == survey_profile.user_id">
+        <a href="#/survey_profiles/{{survey_profile.id}}/features/new" class="btn btn-primary">Add Features</a>
+        <input type="button" class="btn btn-primary" value="Show"/>
+        <input type="button" class="btn btn-primary" value="Edit"/>
+        <input type="button" class="btn btn-danger" value="Delete"/>
+      </td>
+      <td class="col-lg-5" ng-if="current_user.id !== survey_profile.user_id">
+         You don't permit to perform actions for this survey profile.
+      </td>
+    </tr>
+  </tbody>
+</table>
+

@@ -1,7 +1,7 @@
 function featureFeedbackService($resource){
-  return $resource('/feature_feedbacks/:id.json', null, {
+  return $resource('/survey_profiles/:survey_profile_id/feature_feedbacks/:id.json', null, {
     'create': {method:'POST'},
-    'featureFeedbackReport': {url: '/feature_feedbacks/feature_feedback_report.json', method: 'GET'}
+    'featureFeedbackReport': {url: '/survey_profiles/:survey_profile_id/feature_feedbacks/feature_feedback_report.json', method: 'GET'}
   });
 };
 surveyApp.service('featureFeedbackService', ['$resource', featureFeedbackService]);

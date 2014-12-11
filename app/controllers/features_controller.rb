@@ -1,12 +1,20 @@
 class FeaturesController < ApplicationController
-  before_action :authenticate_user!
+  before_filter :authenticate_user!, :except=>[:index]
 
   def index
-    features = current_user.features
-    nubmers_of_feature = Feature::NUMBER_OF_FEATURE - features.length
-    respond_to do |format|
-      format.html
-      format.json { render json: {:features => features, :numbers_of_feature => nubmers_of_feature}}
+    survey_profile = SurveyProfile.where(:id => params[:survey_profile_id]).first
+    if survey_profile
+      features = survey_profile.features
+      nubmers_of_feature = Feature::NUMBER_OF_FEATURE - features.length
+      respond_to do |format|
+        format.html
+        format.json { render json: {:success => true, :survey_profile => survey_profile, :features => features, :numbers_of_feature => nubmers_of_feature}}
+      end
+    else
+      respond_to do |format|
+        format.html
+        format.json { render json: {:success => false, :message => "Your requested Survey Profile does not exist" }}
+      end
     end
   end
 
@@ -16,7 +24,7 @@ class FeaturesController < ApplicationController
       ActiveRecord::Base.transaction  do
         params[:features].each do | feature |
           params[:feature] = feature;
-          current_user.features.create!(feature_params)
+          Feature.create!(feature_params)
           is_features_created = true
         end
       end
@@ -39,7 +47,7 @@ class FeaturesController < ApplicationController
   private
 
     def feature_params
-      params[:feature].permit("title", "user_id")
+      params[:feature].permit("title", "survey_profile_id")
     end
 
 end

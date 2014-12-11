@@ -1,7 +1,7 @@
-function FeaturesFeedbackReportCtrl($scope, featureFeedbackService, growl) {
+function FeaturesFeedbackReportCtrl($scope, $routeParams, featureFeedbackService, growl) {
 
   $scope.initFeedbackReport = function(){
-    featureFeedbackService.featureFeedbackReport({}, function(response){
+    featureFeedbackService.featureFeedbackReport({survey_profile_id: $routeParams.id}, function(response){
       $scope.visited_user = response.visited_user;
       $scope.features_feedback = response.features_feedback;
     });
@@ -10,4 +10,4 @@ function FeaturesFeedbackReportCtrl($scope, featureFeedbackService, growl) {
   $scope.initFeedbackReport();
 }
 
-surveyApp.controller('FeaturesFeedbackReportCtrl', ['$scope', 'featureFeedbackService', 'growl', FeaturesFeedbackReportCtrl]);
+surveyApp.controller('FeaturesFeedbackReportCtrl', ['$scope', '$routeParams', 'featureFeedbackService', 'growl', FeaturesFeedbackReportCtrl]);

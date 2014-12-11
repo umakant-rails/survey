@@ -1,8 +1,14 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
+@import "welcome";
 @import "user_signup";
 @import "homes";
+@import "feature_feedbacks";
+@import "survey_profiles";
 
+body{
+  /*background-color: #D6D6D6;*/
+}
 .clear{
   margin-bottom: 5px;
   clear: both;
@@ -23,7 +29,7 @@
 .growl-notification{
   position:fixed;
   z-index:5000;
-  right: 10px;
+  right: 350px;
   top: 5px;
   min-width:600px;
 }

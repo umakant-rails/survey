@@ -2,6 +2,8 @@ surveyApp.factory('featureFactory', function() {
   featureFactory = {};
   featureFactory.interestedFeature = [];
   featureFactory.nonInterestedFeature = [];
+  featureFactory.surveyProfile = {};
+
   featureFactory.setInterestedFeature = function(feature) {
     featureFactory.interestedFeature = feature;
   };
@@ -13,6 +15,12 @@ surveyApp.factory('featureFactory', function() {
   };
   featureFactory.getNonInterestedFeature = function() {
     return featureFactory.nonInterestedFeature;
+  }
+  featureFactory.setSurveyProfile = function(surveyProfile) {
+    featureFactory.surveyProfile = surveyProfile;
+  };
+  featureFactory.getSurveyProfile = function() {
+    return featureFactory.surveyProfile;
   }
   return featureFactory;
 });

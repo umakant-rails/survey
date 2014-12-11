@@ -1,17 +1,17 @@
 surveyApp.config(['$routeProvider', '$locationProvider', function ($routeProvider, $locationProvider) {
-  $routeProvider.when('/features/new', {
+  $routeProvider.when('/survey_profiles/:id/features/new', {
       templateUrl: 'features/new.html',
       controller: 'FeaturesNewCtrl'
   });
-  $routeProvider.when('/features/refine_features', {
+  $routeProvider.when('/survey_profile/:id/features/refine_features', {
       templateUrl: 'features/refine_features.html',
       controller: 'FeaturesRefineCtrl'
   });
-  $routeProvider.when('/features/feedback_completed', {
+  $routeProvider.when('/survey_profile/:id/features/feedback_completed', {
       templateUrl: 'features/feedback_completed.html',
       controller: 'FeaturesFeedbackComptetedCtrl'
   });
-  $routeProvider.when('/features/feedback_report', {
+  $routeProvider.when('/survey_profile/:id/features/feedback_report', {
       templateUrl: 'features/feedback_report.html',
       controller: 'FeaturesFeedbackReportCtrl'
   });

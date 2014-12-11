@@ -1,0 +1,15 @@
+<table class="row table table-striped table-bordered report-table">
+  <thead>
+    <tr>
+      <th class="col-lg-12" colspan="3" style="text-align:center;"><h4>SURVEY LIST</h4></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat="survey_profile in survey_profiles">
+      <td class="col-lg-12">
+        <a href="#/survey_profile/{{survey_profile.id}}/feedbacks">{{survey_profile.title}}</a>
+      </td>
+    </tr>
+  </tbody>
+</table>
+

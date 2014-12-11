@@ -20,12 +20,14 @@
       <ul class="nav navbar-nav">
         <% if current_user %>
           <li class="dropdown">
-            <a class="dropdown-toggle" data-toggle='dropdown', href='javascript:void(0);'>Features <span class="caret"></span></a>
+            <a class="dropdown-toggle" data-toggle='dropdown', href='javascript:void(0);'>Survey <span class="caret"></span></a>
             <ul class="dropdown-menu" role='menu'>
-              <li><a href="#/features/new"> New Features</a></li>
-              <li><a href="#/features/feedback_report"> Features Feedback</a></li>
+              <li><a href="#/survey_profiles"> Survey List</a></li>
+              <li><a href="#/survey_profiles/new"> New Survey</a></li>
             </ul>
           </li>
+        <% else %>
+          <li><a href="#/survey_profiles">Survey List</a></li>
         <% end %>
       </ul>
       <ul class="nav navbar-nav pull-right">

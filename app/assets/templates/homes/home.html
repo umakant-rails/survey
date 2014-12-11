@@ -1,34 +1,31 @@
-<div class="row" style="margin-top:-20px;">
-  <div class="col-lg-2 lft-feature-bar">
-    <div class="feature-hdr-lbl">
-      Drage these feature onto the two circles
-    </div>
-    <div ng-if="features.length > 0" ng-repeat="feature in features" class="feature-lbl" dd-draggable="true" featureid="{{feature.id}}">
-      {{feature.title}}
-    </div>
-    <div ng-if="features.length == 0" class="feature-lbl">
-      There is no more features.
-    </div>
+<div class="row">
+  <div class="col-lg-2"></div>
+  <div class="col-lg-8">
+    <table class="row table table-striped table-bordered report-table">
+      <thead>
+        <tr>
+          <th class="col-lg-12" colspan="3" style="text-align:center;"><h4>SURVEY LIST</h4></th>
+        </tr>
+        <tr>
+          <th class="col-lg-7">Title</th>
+          <th class="col-lg-5">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="survey_profile in survey_profiles">
+          <td class="col-lg-7">
+            <a href="#/survey_profile/{{survey_profile.id}}/feedbacks">{{survey_profile.title}}</a>
+          </td>
+          <td class="col-lg-5">
+            <a href="#/features/new" class="btn btn-primary">Add Features</a>
+            <input type="button" class="btn btn-primary" value="Show"/>
+            <input type="button" class="btn btn-primary" value="Edit"/>
+            <input type="button" class="btn btn-danger" value="Delete"/>
+          </td>
+        </tr>
+      </tbody>
+    </table>
   </div>
-  <div class="col-lg-10 rght-feature-bar">
-    <div class="circle-contaner" id="dropbox">
-      <div class="non-interested-circle" dd-drop-target="true" name="non-interested-circle">
-        <!--<span ng-repeat="feature in [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]" class="non-interested-feature">yyyyyyyyy</span>-->
-        <span ng-repeat="feature in nonInterestedFeature" class="non-interested-feature">
-          {{feature.title}}
-          <a class="feature-close" feature-id="{{feature.id}}" name="non-interested-circle-element"
-            reset-intersted-non-interested-element>&times;</a>
-        </span>
-        <div class="interested-circle" dd-drop-target="true" name="interested-circle">
-          <!--<span ng-repeat="feature in [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]" class="interested-feature">zzzzzz</span>-->
-          <span ng-repeat="feature in interestedFeature" class="interested-feature">
-            {{feature.title}}
-            <a class="feature-close" feature-id="{{feature.id}}" name="interested-circle-element"
-              reset-intersted-non-interested-element>&times;</a>
-          </span>
-        </div>
-      </div>
-    </div>
-    <a href="javascript:void(0);" ng-click="refineFeature()" class="next-button">Next&nbsp;&nbsp;<i class="glyphicon glyphicon-arrow-right"></i></a>
-  </div>
+  <div class="col-lg-1"></div>
 </div>
+

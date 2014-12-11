@@ -1,5 +1,5 @@
 function featureService($resource){
-  return $resource('/features/:id.json', null, {
+  return $resource('/survey_profiles/:survey_profile_id/features/:id.json', null, {
     'all': {method:'GET'} ,
     'create': {method:'POST'}
   });

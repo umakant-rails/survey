@@ -10,9 +10,12 @@ Rails.application.routes.draw do
     sessions: "users/sessions"
   }
   resources :homes
-  resources :features
-  resources :feature_feedbacks do
-    get :feature_feedback_report, on: :collection
+
+  resources :survey_profiles do
+    resources :features
+    resources :feature_feedbacks do
+      get :feature_feedback_report, on: :collection
+    end
   end
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
