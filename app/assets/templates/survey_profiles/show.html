@@ -1,5 +1,5 @@
 <div class="row" style="margin-top:20px;"></div>
-<div class="row">
+<div ng-if="surveyProfile.id != undefined" class="row">
   <div class="col-lg-2"></div>
   <div class="col-lg-8">
     <div class="row">
@@ -7,7 +7,7 @@
         {{surveyProfile.title}}
       </div>
       <div class="col-md-2">
-        <a ng-if="current_user.id != undefined" href="#/survey_profiles/{{surveyProfile.id}}/edit" class="pull-right btn btn-primary">Edit Survey Profile</a>
+        <a ng-if="current_user.id != undefined && current_user.id == surveyProfile.user_id" href="#survey_profiles/{{surveyProfile.id}}/edit" class="pull-right btn btn-primary">Edit Survey Profile</a>
       </div>
       <div class="clear"></div>
     </div>
