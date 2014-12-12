@@ -4,7 +4,7 @@ function WelcomesIndexCtrl($scope, surveyProfileService, featureFactory) {
       $scope.surveyProfiles = response.survey_profiles;
       $scope.current_user = response.current_user;
     });
-  },
+  };
 
   $scope.delete =  function(survey_profile_id) {
     var should_be_deleted = confirm('are you sure to delete survey profile?');
@@ -24,9 +24,8 @@ function WelcomesIndexCtrl($scope, surveyProfileService, featureFactory) {
         }
       });
     }
-  }
-
+  };
   $scope.welcomeIndex();
-}
+};
 
 surveyApp.controller('WelcomesIndexCtrl', ['$scope', 'surveyProfileService', WelcomesIndexCtrl]);

@@ -2,12 +2,12 @@ function SurveyProfilesNewCtrl($scope, $location, surveyProfileService, growl) {
 
   $scope.initSurveyProfile = function(){
     $scope.surveyProfile = {}
-  }
+  };
 
   $scope.createSurveyProfile = function(){
     var data = {
       survey_profile: $scope.surveyProfile
-    }
+    };
     surveyProfileService.create({}, data, function(response){
       if(response.success) {
         growl.addSuccessMessage(response.message);
@@ -17,7 +17,7 @@ function SurveyProfilesNewCtrl($scope, $location, surveyProfileService, growl) {
         growl.addErrorMessage(response.message);
       }
     });
-  }
+  };
   $scope.initSurveyProfile();
-}
+};
 surveyApp.controller('SurveyProfilesNewCtrl', ['$scope', '$location', 'surveyProfileService', 'growl', SurveyProfilesNewCtrl]);

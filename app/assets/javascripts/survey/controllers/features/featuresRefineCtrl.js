@@ -10,7 +10,7 @@ function FeaturesRefineCtrl($scope, $location, featureFactory, featureFeedbackSe
     $scope.topFirstFeature = [];
     $scope.topSecondFeature = [];
     $scope.topThirdFeature = [];
-  },
+  };
 
   $scope.saveFeedback = function(survey_profile_id){
     if($scope.topFirstFeature.length != 0) { $scope.interestedFeature.push($scope.topFirstFeature[0]); }
@@ -31,7 +31,7 @@ function FeaturesRefineCtrl($scope, $location, featureFactory, featureFeedbackSe
         growl.addErrorMessage(response.message);
       }
     });
-  }
+  };
  $scope.init();
-}
+};
 surveyApp.controller('FeaturesRefineCtrl', ['$scope', '$location', 'featureFactory', 'featureFeedbackService', 'growl', FeaturesRefineCtrl]);

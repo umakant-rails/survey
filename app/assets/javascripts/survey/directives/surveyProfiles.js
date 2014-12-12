@@ -1,9 +1,6 @@
 surveyApp.directive("sortDataTable", function () {
   return {
     restrict: "A",
-    controller: ['$scope', function($scope){
-
-    }],
     link: function(scope, element, attributes, ctlr) {
       scope.columnName = 'title';
       scope.reverse = true;

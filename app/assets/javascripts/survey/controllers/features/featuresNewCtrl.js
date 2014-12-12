@@ -9,7 +9,7 @@ function FeaturesNewCtrl($scope, $location, $routeParams, featureService, growl)
       $scope.survey_profile = response.survey_profile;
       $scope.numbersOfFeature = numbersOfFeature;
     });
-  },
+  };
 
   $scope.createFeatures = function(survey_profile_id){
     var features = [];
@@ -32,8 +32,8 @@ function FeaturesNewCtrl($scope, $location, $routeParams, featureService, growl)
     } else {
        growl.addErrorMessage('please fill features first');
     }
-  }
+  };
 
  $scope.init();
-}
+};
 surveyApp.controller('FeaturesNewCtrl', ['$scope', '$location', '$routeParams', 'featureService', 'growl', FeaturesNewCtrl]);

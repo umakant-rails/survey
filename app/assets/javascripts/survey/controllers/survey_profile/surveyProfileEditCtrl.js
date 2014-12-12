@@ -5,7 +5,7 @@ function SurveyProfilesEditCtrl($scope, $routeParams, $location, surveyProfileSe
       $scope.surveyProfile = response.survey_profile;
       $scope.current_user = response.current_user;
     });
-  }
+  };
 
   $scope.updateSurveyProfile = function(survey_profile_id){
     var data = {
@@ -21,9 +21,9 @@ function SurveyProfilesEditCtrl($scope, $routeParams, $location, surveyProfileSe
         growl.addErrorMessage(response.message);
       }
     });
-  }
+  };
 
   $scope.displaySurveyProfile();
-}
+};
 
 surveyApp.controller('SurveyProfilesEditCtrl', ['$scope', '$routeParams', '$location', 'surveyProfileService', 'featureFactory', 'growl', SurveyProfilesEditCtrl]);

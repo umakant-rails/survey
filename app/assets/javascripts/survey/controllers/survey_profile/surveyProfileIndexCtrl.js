@@ -1,10 +1,10 @@
-function SurveyProfilesIndexCtrl($scope, $location, surveyProfileService, featureFactory, growl) {
-  $scope.featrueIndex = function(){
+function SurveyProfilesIndexCtrl($scope, surveyProfileService, featureFactory, growl) {
+  $scope.surveyProfileIndex = function(){
     surveyProfileService.all({}, function(response){
       $scope.surveyProfiles = response.survey_profiles;
       $scope.current_user = response.current_user;
     });
-  },
+  };
 
   $scope.delete =  function(survey_profile_id) {
     var should_be_deleted = confirm('are you sure to delete survey profile?');
@@ -24,9 +24,8 @@ function SurveyProfilesIndexCtrl($scope, $location, surveyProfileService, featur
         }
       });
     }
-  }
+  };
+  $scope.surveyProfileIndex();
+};
 
-  $scope.featrueIndex();
-}
-
-surveyApp.controller('SurveyProfilesIndexCtrl', ['$scope', '$location', 'surveyProfileService', 'featureFactory', 'growl', SurveyProfilesIndexCtrl]);
+surveyApp.controller('SurveyProfilesIndexCtrl', ['$scope', 'surveyProfileService', 'featureFactory', 'growl', SurveyProfilesIndexCtrl]);

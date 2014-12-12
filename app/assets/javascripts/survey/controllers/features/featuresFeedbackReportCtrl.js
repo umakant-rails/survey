@@ -5,9 +5,9 @@ function FeaturesFeedbackReportCtrl($scope, $routeParams, featureFeedbackService
       $scope.visited_user = response.visited_user;
       $scope.features_feedback = response.features_feedback;
     });
-  }
+  };
 
   $scope.initFeedbackReport();
-}
+};
 
 surveyApp.controller('FeaturesFeedbackReportCtrl', ['$scope', '$routeParams', 'featureFeedbackService', 'growl', FeaturesFeedbackReportCtrl]);
