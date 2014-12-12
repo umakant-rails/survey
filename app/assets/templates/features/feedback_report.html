@@ -6,18 +6,30 @@
         <tr>
           <th class="col-lg-12 table-top-row-txt" colspan="7" style="text-align:left;">{{visited_user}} People have completed your survey</th>
         </tr>
-        <tr>
-          <th class="col-lg-4">Feature</th>
+        <tr class="table-header">
+          <th class="col-lg-4" data-column="title" sort-data-table>
+            Feature <i class="sort-icon glyphicon glyphicon-chevron-up"></i>
+          </th>
           <th class="col-lg-1"></th>
-          <th class="col-lg-2">Interesting</th>
-          <th class="col-lg-2">Not Interesting</th>
-          <th class="col-lg-1">1st</th>
-          <th class="col-lg-1">2nd</th>
-          <th class="col-lg-1" style="min-width: 65px;">3rd</th>
+          <th class="col-lg-2" data-column="interested" sort-data-table>
+            Interesting <i class="sort-icon"></i>
+          </th>
+          <th class="col-lg-2" data-column="not_interested" sort-data-table>
+            Not Interesting <i class="sort-icon"></i>
+          </th>
+          <th class="col-lg-1" data-column="first" sort-data-table>
+            1st <i class="sort-icon"></i>
+          </th>
+          <th class="col-lg-1" data-column="second" sort-data-table>
+            2nd <i class="sort-icon"></i>
+          </th>
+          <th class="col-lg-1" data-column="third"  sort-data-table style="min-width: 65px;">
+            3rd <i class="sort-icon"></i>
+          </th>
         </tr>
       </thead>
       <tbody>
-        <tr ng-repeat="feature in features_feedback">
+        <tr ng-repeat="feature in features_feedback|orderBy:columnName:reverse">
           <td class="col-lg-4">{{feature.title}}</td>
           <td class="col-lg-1"></td>
           <td class="col-lg-2" ng-if="feature.interested != 0">{{feature.interested}}</td>
