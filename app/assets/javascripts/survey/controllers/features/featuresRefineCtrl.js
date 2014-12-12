@@ -26,7 +26,7 @@ function FeaturesRefineCtrl($scope, $location, featureFactory, featureFeedbackSe
         $scope.topSecondFeature = [];
         $scope.topThirdFeature = [];
         growl.addSuccessMessage(response.message);
-        $location.path('/survey_profile/' + survey_profile_id + '/features/feedback_completed');
+        $location.path('/survey_profiles/' + survey_profile_id + '/features/feedback_completed');
       } else {
         growl.addErrorMessage(response.message);
       }
