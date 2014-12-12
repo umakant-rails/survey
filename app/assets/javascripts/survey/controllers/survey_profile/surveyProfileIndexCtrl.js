@@ -1,5 +1,6 @@
-function SurveyProfilesIndexCtrl($scope, surveyProfileService, featureFactory, growl) {
+function SurveyProfilesIndexCtrl($scope, $location, surveyProfileService, featureFactory, growl) {
   $scope.surveyProfileIndex = function(){
+    $scope.siteUrl = window.location.origin;
     surveyProfileService.all({}, function(response){
       $scope.surveyProfiles = response.survey_profiles;
       $scope.current_user = response.current_user;
@@ -28,4 +29,4 @@ function SurveyProfilesIndexCtrl($scope, surveyProfileService, featureFactory, g
   $scope.surveyProfileIndex();
 };
 
-surveyApp.controller('SurveyProfilesIndexCtrl', ['$scope', 'surveyProfileService', 'featureFactory', 'growl', SurveyProfilesIndexCtrl]);
+surveyApp.controller('SurveyProfilesIndexCtrl', ['$scope', '$location', 'surveyProfileService', 'featureFactory', 'growl', SurveyProfilesIndexCtrl]);

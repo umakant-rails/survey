@@ -14,6 +14,9 @@
         <a  href="#/survey_profiles/{{surveyProfile.id}}">
           {{surveyProfile.title}}
         </a>
+        <div ng-if="current_user.id == surveyProfile.user_id">
+          <strong>Feedback url:</strong> {{siteUrl}}/#/survey_profiles/{{surveyProfile.id}}/feedbacks
+        </div>
       </td>
       <td class="col-lg-6">
         <!-- owner can'nt submit feedback report -->
