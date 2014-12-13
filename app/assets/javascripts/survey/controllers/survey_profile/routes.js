@@ -1,11 +1,11 @@
 surveyApp.config(['$routeProvider', '$locationProvider', function ($routeProvider, $locationProvider) {
   $routeProvider.when('/survey_profiles/sorting/new', {
     templateUrl: 'survey_profiles/sorting_survey_new.html',
-    controller: 'SurveyProfilesNewCtrl'
+    controller: 'SurveySortingProfilesNewCtrl'
   });
   $routeProvider.when('/survey_profiles/image/new', {
     templateUrl: 'survey_profiles/image_survey_new.html',
-    controller: 'SurveyProfilesNewCtrl'
+    controller: 'SurveyImageProfilesNewCtrl'
   });
   $routeProvider.when('/survey_profiles', {
     templateUrl: 'survey_profiles/index.html',
