@@ -20,7 +20,9 @@
       <ul class="nav navbar-nav">
         <% if current_user %>
           <li><a href="#/survey_profiles"> Survey List</a></li>
-          <li><a href="#/survey_profiles/new"> New Survey</a></li>
+          <!--<li><a href="#/survey_profiles/new"> New Survey</a></li>-->
+          <li><a href="javascript:void(0);" data-action="open" survey-profile-popup> New Survey</a></li>
+          <div id="survey_type_popup"></div>
         <% else %>
           <li><a href="#/survey_profiles">Survey List</a></li>
         <% end %>

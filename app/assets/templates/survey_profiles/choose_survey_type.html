@@ -1,0 +1,42 @@
+<div class="modal fade in" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="false" style="display: block;">
+  <div class="modal-backdrop fade in" style="height: 988px;"></div>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-action="close" survey-profile-popup>
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="modal-title" id="myModalLabel">Choose Survey Profile</h4>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-lg-3"></div>
+          <div class="col-lg-6">
+            <div class="btn-group" data-toggle="buttons">
+              <label ng-if="selectedSurveyType == 'Sorting Survey'" class="btn btn-primary profile_survey_type active">
+                <input type="radio" name="options" id="option2" autocomplete="off"> Sorting Survey
+              </label>
+              <label ng-if="selectedSurveyType != 'Sorting Survey' || selectedSurveyType == undefined"
+                class="btn btn-primary profile_survey_type">
+                <input type="radio" name="options" id="option2" autocomplete="off"> Sorting Survey
+              </label>
+              <label ng-if="selectedSurveyType == 'Image Survey'" class="btn btn-primary profile_survey_type active">
+                <input type="radio" name="options" id="option3" autocomplete="off"> Image Survey
+              </label>
+              <label ng-if="selectedSurveyType != 'Image Survey' || selectedSurveyType == undefined"
+                class="btn btn-primary profile_survey_type">
+                <input type="radio" name="options" id="option3" autocomplete="off"> Image Survey
+              </label>
+            </div>
+          </div>
+          <div class="col-lg-3"></div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-action="close" survey-profile-popup>Close</button>
+        <button type="button" class="btn btn-primary" data-action="next" survey-profile-popup
+          ng-click="openNewSurveyProfile()" ng-controller="SurveyProfilesIndexCtrl">Next</button>
+      </div>
+    </div>
+  </div>
+</div>

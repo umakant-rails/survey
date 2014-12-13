@@ -26,6 +26,14 @@ function SurveyProfilesIndexCtrl($scope, $location, surveyProfileService, featur
       });
     }
   };
+
+  $scope.openNewSurveyProfile = function(){
+    if($scope.selectedSurveyType == "Sorting Survey") {
+      $location.path('/survey_profiles/sorting/new');
+    } else if($scope.selectedSurveyType == "Image Survey"){
+      $location.path('/survey_profiles/image/new');
+    }
+  }
   $scope.surveyProfileIndex();
 };
 

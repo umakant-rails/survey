@@ -1,7 +1,7 @@
 surveyApp.directive("sortDataTable", function () {
   return {
     restrict: "A",
-    link: function(scope, element, attributes, ctlr) {
+    link: function(scope, element, attributes, ctrl) {
       scope.columnName = 'title';
       scope.reverse = true;
       element.on('click', function(){
@@ -28,3 +28,43 @@ surveyApp.directive("sortDataTable", function () {
     }
   };
 });
+
+surveyApp.directive("surveyProfilePopup", ['$compile', function($compile){
+  return{
+    restrict: 'A',
+    controller: ['$scope', '$location', function($scope, $location){
+      this.openPopup = function(){
+        if($location.path() == "/survey_profiles/sorting/new") {
+          $scope.selectedSurveyType = "Sorting Survey";
+        } else if($location.path() == "/survey_profiles/image/new"){
+           $scope.selectedSurveyType = "Image Survey";
+        }
+        var popup = angular.element("<div ng-include=\"'survey_profiles/choose_survey_type.html'\"></div>");
+        angular.element("#survey_type_popup").html(popup);
+        $compile(popup)($scope);
+        $scope.$apply();
+      },
+      this.closePopup = function(){
+        angular.element("#survey_type_popup").html("");
+      },
+      this.openNewSurveyForm = function(){
+        var selectedSurveyType = angular.element(".profile_survey_type.active").text().trim();
+        $scope.selectedSurveyType = selectedSurveyType;
+        $scope.$apply();
+        angular.element("#survey_type_popup").html("");
+      }
+    }],
+    link(scope, element, attributes, ctrl){
+      element.on('click', function(){
+        var dataAction = element.attr('data-action');
+        if(dataAction == "open") {
+          ctrl.openPopup();
+        } else if(dataAction == "close") {
+          ctrl.closePopup();
+        } else if(dataAction == "next") {
+          ctrl.openNewSurveyForm();
+        }
+      });
+    }
+  }
+}]);
