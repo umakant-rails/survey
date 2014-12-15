@@ -4,16 +4,23 @@ class FeatureFeedbacksController < ApplicationController
   def create
     is_feedback_submitted = false
     begin
+
+      survey_profile = SurveyProfile.where(:id => params[:survey_profile_id]).first rescue nil
+      feature_feedback = survey_profile.present? ? survey_profile.feature_feedbacks.last : nil
+      member_survey_number = feature_feedback.present? ? feature_feedback.member_survey_number : 0
+
       ActiveRecord::Base.transaction  do
         params[:interested_feature] && params[:interested_feature].each do | feature |
           params[:feature_feedback] = {feature_id: feature[:id], interested: true, interested_priority: feature[:interestedPosition]}
           params[:feature_feedback][:user_id] = current_user.present? ? current_user.id : nil
-          FeatureFeedback.create!(feature_feedback_params)
+          params[:feature_feedback][:member_survey_number] = member_survey_number + 1
+          survey_profile.feature_feedbacks.create!(feature_feedback_params)
         end
         params[:non_interested_feature] && params[:non_interested_feature].each do | feature |
           params[:feature_feedback] = {feature_id: feature[:id], not_interested: true}
           params[:feature_feedback][:user_id] = current_user.present? ? current_user.id : nil
-          FeatureFeedback.create!(feature_feedback_params)
+          params[:feature_feedback][:member_survey_number] = member_survey_number + 1
+          survey_profile.feature_feedbacks.create!(feature_feedback_params)
         end
       end
       is_feedback_submitted = true;
@@ -60,12 +67,9 @@ class FeatureFeedbacksController < ApplicationController
       non_interested = feature.feature_feedbacks.where(:not_interested => true)
       temp_hash[:not_interested] = non_interested.blank? ? 0 : non_interested.size
 
-      #visited_user = (interested_features_counts.size > visited_user) ? interested_features_counts.size : visited_user
-      #visited_user = (non_interested.size > visited_user) ? non_interested.size : visited_user
-
       features_feedback[features_feedback.size] = temp_hash
     end
-    visited_user = survey_profile.features.joins(:feature_feedbacks).select("feature_feedbacks.user_id user_id").map(&:user_id).uniq.size
+    visited_user = survey_profile.feature_feedbacks.present? ? survey_profile.feature_feedbacks.last.member_survey_number : 0
 
     respond_to do |format|
       format.html
@@ -76,7 +80,7 @@ class FeatureFeedbacksController < ApplicationController
 
   private
     def feature_feedback_params
-      params[:feature_feedback].permit( "interested", "not_interested", "interested_priority", "feature_id", "user_id")
+      params[:feature_feedback].permit( "interested", "not_interested", "interested_priority", "feature_id", "user_id", "survey_profile_id", "member_survey_number")
     end
 
 end
