@@ -54,7 +54,7 @@ surveyApp.directive("surveyProfilePopup", ['$compile', function($compile){
         angular.element("#survey_type_popup").html("");
       }
     }],
-    link(scope, element, attributes, ctrl){
+    link: function(scope, element, attributes, ctrl){
       element.on('click', function(){
         var dataAction = element.attr('data-action');
         if(dataAction == "open") {
