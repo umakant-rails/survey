@@ -14,7 +14,7 @@
         <a  href="#/survey_profiles/{{surveyProfile.id}}">
           {{surveyProfile.title}}
         </a>
-        <div ng-if="current_user.id == surveyProfile.user_id">
+        <div ng-if="current_user.id == surveyProfile.user_id || current_user.role_id == 1">
           <strong>Feedback url:</strong> {{siteUrl}}/#/survey_profiles/{{surveyProfile.id}}/feedbacks
         </div>
       </td>

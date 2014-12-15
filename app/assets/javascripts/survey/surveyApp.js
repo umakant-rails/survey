@@ -1,4 +1,4 @@
-var surveyApp = angular.module('surveyApp', ['ngRoute', 'templates', 'ngResource', 'angular-growl']);
+var surveyApp = angular.module('surveyApp', ['ngRoute', 'templates', 'ngResource', 'angular-growl', 'angularFileUpload']);
 
 surveyApp.config([
   '$httpProvider', function($httpProvider) {

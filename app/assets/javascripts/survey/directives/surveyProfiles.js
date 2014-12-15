@@ -68,3 +68,34 @@ surveyApp.directive("surveyProfilePopup", ['$compile', function($compile){
     }
   }
 }]);
+
+surveyApp.directive('ngFileDrop', function(){
+  return {
+    link: function($scope,element){
+      element.bind("drop", function(event){
+        var reader = new FileReader();
+        var file = event.originalEvent.dataTransfer.files[0];
+        reader.onload = onLoadFile;
+        reader.readAsDataURL(file);
+
+        function onLoadFile(event) {
+          $scope.imageSrc = event.target.result;
+          $scope.$apply();
+          angular.element("#dropped-image-div").removeClass('hide');
+          angular.element("#drag-image-label").addClass('hide');
+        }
+      });
+    }
+  }
+});
+surveyApp.directive('removeDroppedImage', function(){
+  return {
+    link: function($scope,element){
+      element.bind("click", function(event){
+        angular.element("#drag-n-drop-box").attr('ng-src', '');
+        angular.element("#dropped-image-div").addClass('hide');
+        angular.element("#drag-image-label").removeClass('hide');
+      });
+    }
+  }
+});

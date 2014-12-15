@@ -1,3 +1,4 @@
+<!-- http://plnkr.co/edit/y5n16v?p=preview-->
 <div class="row" style="margin-top:20px;"></div>
 <div class="row">
   <div class="col-lg-2"></div>
@@ -12,10 +13,18 @@
           </div>
         </div>
         <div class="clear"></div>
-        <div class="row drag-n-drop-box">
-          <!--center><input type="file" name="image_file" class="drag-image-input" size="40"/></center>
-          <div class="clear"> or </div>-->
-          <div class="drag-image-txt">Drag image here</div>
+        <input type="hidden" ng-file-select="onFileSelect($files)">
+        <div id="dropbox" class="row drag-n-drop-box" ng-file-drop="onFileSelect($files)"
+          ng-file-drag-over-class="optional-css-class-name-or-function"
+          ng-show="dropSupported" accept="image/*">
+          <div id="drag-image-label" class="drag-image-txt">{{dropText}}</div>
+          <div id="dropped-image-div" class="hide">
+            <div class="cross-image-sign" remove-dropped-image>&times;</div>
+            <img id="dropped-img" class="drag-n-drop-box" ng-src="{{imageSrc}}" />
+          </div>
+        </div>
+        <div ng-file-drop-available="dropSupported=true"
+          ng-show="!dropSupported">HTML5 Drop File is not supported!</div>
         </div>
       </div>
       <div class="col-lg-1"></div>

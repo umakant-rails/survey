@@ -54,18 +54,53 @@
 .img-next-btn{
   padding: 5px 40px;
   border-radius: 0px !important;
+  border: 1px solid #F7F6F6;
 }
+
+.img-holder-div{
+  position: relative;
+  border: 1px solid lightgray;
+  min-height: 650px;
+  max-height: 650px;
+  max-width: 750px;
+  margin-bottom: 20px;
+}
+
 .drag-n-drop-box{
   border: 1px solid lightgray;
-  min-height: 700px;
+  min-height: 650px;
+  max-height: 650px;
+  max-width: 750px;
   margin-bottom: 20px;
   vertical-align: middle;
   text-align: center;
+  z-index:1000;
 }
+
 .drag-image-input{
   margin-top: 320px;
 }
+
 .drag-image-txt{
-  margin-top: 340px;
+  margin-top: 300px;
   color: gray;
+}
+
+.cross-image-sign{
+  border: 1px solid #CC181E;
+  border-radius: 15px;
+  color: #CC181E;
+  font-size: 20px;
+  font-weight: bold;
+  line-height: 1;
+  padding: 0 5px 3px;
+  position: absolute;
+  right: 8px;
+  top: 42px;
+  z-index: 5000;
+  cursor: pointer;
+}
+
+.cross-image-sign:hover{
+  color: #CC181E;
 }

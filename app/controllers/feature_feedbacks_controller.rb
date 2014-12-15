@@ -38,6 +38,8 @@ class FeatureFeedbacksController < ApplicationController
     survey_profile = SurveyProfile.where(:id => params[:survey_profile_id]).first
     features = survey_profile.features
     features_feedback = []
+    visited_user = 0;
+
     features.each do | feature |
       temp_hash = {}
       temp_hash[:title] = feature.title
@@ -57,9 +59,14 @@ class FeatureFeedbacksController < ApplicationController
 
       non_interested = feature.feature_feedbacks.where(:not_interested => true)
       temp_hash[:not_interested] = non_interested.blank? ? 0 : non_interested.size
+
+      #visited_user = (interested_features_counts.size > visited_user) ? interested_features_counts.size : visited_user
+      #visited_user = (non_interested.size > visited_user) ? non_interested.size : visited_user
+
       features_feedback[features_feedback.size] = temp_hash
     end
     visited_user = survey_profile.features.joins(:feature_feedbacks).select("feature_feedbacks.user_id user_id").map(&:user_id).uniq.size
+
     respond_to do |format|
       format.html
       format.json { render json: {:success => true, :features_feedback => features_feedback,
