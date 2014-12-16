@@ -8,15 +8,6 @@ function SurveyImageProfilesNewCtrl($scope, $location, surveyProfileService, gro
 
   $scope.onFileSelect = function($files) {
     $scope.file = $files[0];
-    /*$scope.upload = $upload.upload({
-      url: 'server/upload/url', //upload.php script, node.js route, or servlet url
-      data: {myObj: $scope.myModelObj},
-      file: file, // or list of files ($files) for html5 only
-    }).progress(function(evt) {
-      console.log('percent: ' + parseInt(100.0 * evt.loaded / evt.total));
-    }).success(function(data, status, headers, config) {
-      console.log(data);
-    });*/
   };
 
   $scope.createImageSurveyProfile = function(){

@@ -1,0 +1,27 @@
+<div class="row" style="margin-top:20px;"></div>
+<div ng-if="surveyProfile.id != undefined" class="row">
+  <div class="col-lg-2"></div>
+  <div class="col-lg-8">
+    <div class="row">
+      <div class="col-md-10 survey-profile-hdr">
+        {{surveyProfile.title}}
+      </div>
+      <div class="col-md-2">
+        <!--a ng-if="current_user.id != undefined && current_user.id == surveyProfile.user_id" href="#survey_profiles/{{surveyProfile.id}}/edit" class="pull-right btn btn-primary">Edit Survey Profile</a>-->
+      </div>
+      <div class="clear"></div>
+    </div>
+    <div class="row bdr"></div>
+    <div class="clear"></div>
+    <div class="row survey-profile-descrition">
+      <div ng-if="image != undefined" id="dropped-image-div">
+        <img ng-id="dropped-img" class="drag-n-drop-box" src="{{image.image_url}}">
+      </div>
+      <div ng-if="image == undefined" id="dropped-image-div">
+        There is no image.
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-2"></div>
+</div>
+
