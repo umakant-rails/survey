@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   resources :homes
 
   resources :survey_profiles do
+    post :create_image_survey, on: :collection
     resources :features
     resources :feature_feedbacks do
       get :feature_feedback_report, on: :collection

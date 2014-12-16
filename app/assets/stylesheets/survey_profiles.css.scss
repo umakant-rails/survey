@@ -60,16 +60,16 @@
 .img-holder-div{
   position: relative;
   border: 1px solid lightgray;
-  min-height: 650px;
-  max-height: 650px;
+  min-height: 750px;
+  max-height: 750px;
   max-width: 750px;
   margin-bottom: 20px;
 }
 
 .drag-n-drop-box{
   border: 1px solid lightgray;
-  min-height: 650px;
-  max-height: 650px;
+  min-height: 750px;
+  max-height: 750px;
   max-width: 750px;
   margin-bottom: 20px;
   vertical-align: middle;
@@ -90,10 +90,10 @@
   border: 1px solid #CC181E;
   border-radius: 15px;
   color: #CC181E;
-  font-size: 20px;
+  font-size: 12px;
   font-weight: bold;
   line-height: 1;
-  padding: 0 5px 2px;
+  padding: 4px;
   position: absolute;
   right: 8px;
   top: 42px;

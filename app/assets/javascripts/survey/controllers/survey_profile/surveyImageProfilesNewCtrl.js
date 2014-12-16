@@ -7,8 +7,7 @@ function SurveyImageProfilesNewCtrl($scope, $location, surveyProfileService, gro
   $scope.dropText = 'Drop files here...';
 
   $scope.onFileSelect = function($files) {
-    var reader = new FileReader();
-    console.log($files[0]);
+    $scope.file = $files[0];
     /*$scope.upload = $upload.upload({
       url: 'server/upload/url', //upload.php script, node.js route, or servlet url
       data: {myObj: $scope.myModelObj},
@@ -20,6 +19,26 @@ function SurveyImageProfilesNewCtrl($scope, $location, surveyProfileService, gro
     });*/
   };
 
+  $scope.createImageSurveyProfile = function(){
+    var data = {
+      file: $scope.file
+    }
+    $scope.upload = $upload.upload({
+      url: '/survey_profiles/create_image_survey.json',
+      type: 'post',
+      data: {myObj: $scope.myModelObj},
+      file: $scope.file,
+    }).progress(function(evt) {
+      console.log('percent: ' + parseInt(100.0 * evt.loaded / evt.total));
+    }).success(function(response, status, headers, config) {
+      if(response.success){
+        $location.path('/survey_profiles');
+        growl.addSuccessMessage(response.message);
+      }  else {
+        growl.addErrorMessage(response.message);
+      }
+    });
+  };
   $scope.initSurveyProfile();
 };
 surveyApp.controller('SurveyImageProfilesNewCtrl', ['$scope', '$location', 'surveyProfileService', 'growl', '$upload', SurveyImageProfilesNewCtrl]);

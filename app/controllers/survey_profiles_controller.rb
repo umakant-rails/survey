@@ -26,6 +26,27 @@ class SurveyProfilesController < ApplicationController
     end
   end
 
+  def create_image_survey
+    params[:survey_profile] = {survey_profile_type: SurveyProfile::SURVEY_PROFILE_TYPE[:image]}
+    params[:survey_profile][:title] = "Image name - " + params[:file].original_filename
+    survey_profile = current_user.survey_profiles.create!(survey_profiles_params)
+    params[:image] = {image: params[:file]}
+
+    image = Image.new(image_params)
+    image.imageable = survey_profile
+    if image.save
+      respond_to do |format|
+        format.html
+        format.json { render json: {:success => true, :survey_profile => survey_profile, :message => "Successfully created survey profile"}}
+      end
+    else
+      respond_to do |format|
+        format.html
+        format.json { render json: {:success => false, :message => "Your action survey profile action is failed"}}
+      end
+    end
+  end
+
   def show
     survey_profile = SurveyProfile.where(:id => params[:id]).first
     features = survey_profile.features
@@ -83,6 +104,9 @@ class SurveyProfilesController < ApplicationController
   private
     def survey_profiles_params
       params[:survey_profile].permit( "id", "title", "description", "user_id", "survey_profile_type", "created_at", "updated_at");
+    end
+    def image_params
+      params[:image].permit( "id", "image", "imageable_id", "imageable_type", "survey_profile_type", "image_url", "created_at", "updated_at");
     end
 
 end

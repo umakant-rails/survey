@@ -41,3 +41,5 @@ gem 'spring',        group: :development
 gem 'devise'
 gem 'bower-rails'
 gem 'angular-rails-templates'
+gem "rmagick"
+gem "carrierwave"
