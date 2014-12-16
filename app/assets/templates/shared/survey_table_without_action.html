@@ -11,7 +11,7 @@
   <tbody>
     <tr ng-if="surveyProfiles !== undefined && surveyProfiles.length > 0" ng-repeat="surveyProfile in surveyProfiles">
       <td class="col-lg-6">
-        <a ng-if="surveyProfile.survey_profile_type == 1 || surveyProfile.survey_profile_type == undefined"
+        <a ng-if="surveyProfile.survey_profile_type == 1"
           href="#/survey_profiles/sorting/{{surveyProfile.id}}">
           {{surveyProfile.title}}
         </a>
@@ -21,7 +21,10 @@
         </a>
       </td>
       <td class="col-lg-6">
-         <a href="#/survey_profiles/{{surveyProfile.id}}/feedbacks" class="btn btn-sm btn-primary">
+        <a ng-if="surveyProfile.survey_profile_type == 1" href="#/survey_profiles/{{surveyProfile.id}}/feedbacks" class="btn btn-sm btn-primary">
+          Submit Feedback
+        </a>
+        <a ng-if="surveyProfile.survey_profile_type == 2" href="#/survey_profiles/image/{{surveyProfile.id}}/feedbacks" class="btn btn-sm btn-primary">
           Submit Feedback
         </a>
       </td>

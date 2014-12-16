@@ -6,7 +6,8 @@ function surveyProfileService($resource){
     'update': {method:'PUT'} ,
     'userSurveyProfile': {method:'GET'} ,
     'create': {method:'POST'},
-    'delete': {method:'DELETE'}
+    'delete': {method:'DELETE'},
+    'surveyImageProfileShow': {url: '/survey_profiles/:id/image_survey_show.json', method: 'GET'}
   });
 };
 surveyApp.service('surveyProfileService', ['$resource', surveyProfileService]);
