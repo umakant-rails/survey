@@ -51,26 +51,26 @@
   vertical-align: middle;
   float:right;
 }
+
 .img-next-btn{
   padding: 5px 40px;
   border-radius: 0px !important;
-  border: 1px solid #F7F6F6;
 }
 
 .img-holder-div{
   position: relative;
   border: 1px solid lightgray;
-  min-height: 750px;
-  max-height: 750px;
-  max-width: 750px;
+  min-height: 752px;
+  max-height: 752px;
+  max-width: 752px;
   margin-bottom: 20px;
 }
 
 .drag-n-drop-box{
   border: 1px solid lightgray;
-  min-height: 750px;
-  max-height: 750px;
-  max-width: 750px;
+  min-height: 752px;
+  max-height: 752px;
+  max-width: 752px;
   margin-bottom: 20px;
   vertical-align: middle;
   text-align: center;
@@ -103,4 +103,15 @@
 
 .cross-image-sign:hover{
   color: #CC181E;
+}
+
+.question-div {
+  font-size: 16px;
+  padding: 2px 6px;
+}
+
+.img-survey-profile-feedback{
+  border: 1px solid lightgray;
+  text-align: center;
+  padding: 5px;
 }

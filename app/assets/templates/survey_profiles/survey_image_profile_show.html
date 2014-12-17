@@ -14,8 +14,8 @@
     <div class="row bdr"></div>
     <div class="clear"></div>
     <div class="row survey-profile-descrition">
-      <div ng-if="image != undefined" id="dropped-image-div">
-        <img ng-id="dropped-img" class="drag-n-drop-box" src="{{image.image_url}}">
+      <div ng-if="image != undefined" id="dropped-image-div" class="drag-n-drop-box">
+        <img ng-id="dropped-img" src="{{image.image_url}}">
       </div>
       <div ng-if="image == undefined" id="dropped-image-div">
         There is no image.

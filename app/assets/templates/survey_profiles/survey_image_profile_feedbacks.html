@@ -13,9 +13,17 @@
     </div>
     <div class="row bdr"></div>
     <div class="clear"></div>
-    <div class="row survey-profile-descrition">
+    <div class="row">
+      <div id="image_survey_question" class="question-div pull-left">{{survey_question}}</div>
+      <div class="pull-right">
+        <button id="image_feedback_next_btn" class="btn btn-primary img-next-btn disabled" ng-click="saveImageProfileFeedback()">Next</button>
+      </div>
+    </div>
+    <div class="clear"></div>
+    <div class="row img-survey-profile-feedback">
       <div ng-if="image.image_url != undefined" id="dropped-image-div">
-        <img ng-id="dropped-img" class="drag-n-drop-box" src="{{image.image_url}}">
+        <canvas id="myCanvas" set-image-on-canvas ></canvas>
+        <!--<img id="dropped-img" class="drag-n-drop-box" src="{{image.image_url}}" get-image-coordinate/>-->
       </div>
       <div ng-if="image == undefined" id="dropped-image-div">
         There is no image.

@@ -88,6 +88,7 @@ surveyApp.directive('ngFileDrop', function(){
     }
   }
 });
+
 surveyApp.directive('removeDroppedImage', function(){
   return {
     link: function($scope,element){
@@ -95,6 +96,76 @@ surveyApp.directive('removeDroppedImage', function(){
         angular.element("#drag-n-drop-box").attr('ng-src', '');
         angular.element("#dropped-image-div").addClass('hide');
         angular.element("#drag-image-label").removeClass('hide');
+      });
+    }
+  }
+});
+
+surveyApp.directive('setImageOnCanvas', function(){
+  return {
+    restrict: 'A',
+    controller: ['$scope', 'growl', function($scope, growl){
+      this.markClickedArea = function(event, context){
+        if($scope.question_counter < 3) {
+          var offset = $(event.target).offset();
+          var xCoordinate = (event.pageX - offset.left);
+          var yCoordinate = (event.pageY - offset.top);
+          context.fillStyle = $scope.image_survey_questions[$scope.question_counter]['color']; //"#DFA6B1";
+          context.beginPath();
+          context.arc(xCoordinate,yCoordinate, 15, 0 , Math.PI*2,true);
+          context.closePath();
+          context.fill();
+          this.setCoordinates(xCoordinate, yCoordinate);
+          this.enableNextButton();
+          $scope.question_counter = $scope.question_counter + 1;
+          if($scope.question_counter < 3) {
+            var survey_question = $scope.image_survey_questions[$scope.question_counter]['question'];
+            angular.element("#image_survey_question").html(survey_question);
+          } else {
+            angular.element("#image_survey_question").html("");
+          }
+
+          $scope.$apply();
+        } else{
+          this.showErrorMessage();
+        }
+      },
+      this.setCoordinates = function(xCoordinate, yCoordinate){
+        $scope.image_survey_questions[$scope.question_counter]['xCoordinate'] = xCoordinate;
+        $scope.image_survey_questions[$scope.question_counter]['yCoordinate'] = yCoordinate;
+      },
+      this.showErrorMessage = function(){
+        $scope.survey_question = "";
+        growl.addErrorMessage('You have completed your survey. Now click on next.');
+        $scope.$apply();
+      },
+      this.enableNextButton = function(){
+        if(angular.element("#image_feedback_next_btn").hasClass('disabled')){
+          angular.element("#image_feedback_next_btn").removeClass('disabled');
+        }
+      },
+      this.createCanvase = function(canvas, context) {
+        base_image = new Image();
+        base_image.src = $scope.image.image_url;
+        base_image.onload = function(){
+          canvas.width = base_image.width;
+          canvas.height = base_image.height;
+          if(canvas.width > 752){
+            canvas.width = 750;
+          }
+          if(canvas.height > 752){
+            canvas.height = 750;
+          }
+          context.drawImage(base_image, 0, 0, base_image.width, base_image.height);
+        }
+      };
+    }],
+    link: function(scope, element, attributes,ctrl){
+      var canvas = document.getElementById('myCanvas');
+      var context = canvas.getContext('2d');
+      ctrl.createCanvase(canvas, context);
+      element.on('click', function(event){
+        ctrl.markClickedArea(event, context)
       });
     }
   }
