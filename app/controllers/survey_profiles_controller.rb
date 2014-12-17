@@ -160,7 +160,7 @@ class SurveyProfilesController < ApplicationController
     def image_params
       params[:image].permit( "id", "name", "image", "imageable_id", "imageable_type", "survey_profile_type", "image_url", "created_at", "updated_at");
     end
-    def image_params
+    def image_survey_feedback_params
       params[:image_survey_feedback].permit("id", "profile_survey_id", "image_question_id", "xcoordinate", "ycoordinate", "member_survey_number", "user_id", "integer", "created_at", "updated_at");
     end
 

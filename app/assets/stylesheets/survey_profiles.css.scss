@@ -68,13 +68,22 @@
 
 .drag-n-drop-box{
   border: 1px solid lightgray;
-  min-height: 752px;
+  min-height: 762px;
   max-height: 752px;
-  max-width: 752px;
+  max-width: 762px;
   margin-bottom: 20px;
   vertical-align: middle;
   text-align: center;
+  padding-top: 5px;
   z-index:1000;
+}
+
+.drag-n-drop-box-image{
+  max-height: 752px;
+  max-width: 752px;
+  vertical-align: middle;
+  text-align: center;
+  z-index:2000;
 }
 
 .drag-image-input{
