@@ -1,4 +1,4 @@
-function SurveySortingProfilesNewCtrl($scope, $location, surveyProfileService, growl) {
+function SurveyProfilesNewCtrl($scope, $location, surveyProfileService, growl) {
 
   $scope.initSurveyProfile = function(){
     $scope.surveyProfile = {}
@@ -21,4 +21,4 @@ function SurveySortingProfilesNewCtrl($scope, $location, surveyProfileService, g
   };
   $scope.initSurveyProfile();
 };
-surveyApp.controller('SurveySortingProfilesNewCtrl', ['$scope', '$location', 'surveyProfileService', 'growl', SurveySortingProfilesNewCtrl]);
+surveyApp.controller('SurveyProfilesNewCtrl', ['$scope', '$location', 'surveyProfileService', 'growl', SurveyProfilesNewCtrl]);
