@@ -3,7 +3,7 @@ class SurveyProfilesController < ApplicationController
 
   def index
     survey_profiles = nil
-    survey_profiles = SurveyProfile.all()
+    survey_profiles = SurveyProfile.order("updated_at DESC")
     respond_to do |format|
       format.html
       format.json { render json: {:success => true, :current_user => current_user, :survey_profiles => survey_profiles}}
