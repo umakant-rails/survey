@@ -106,7 +106,7 @@ class SurveyProfilesController < ApplicationController
   def image_survey_show
     survey_profile = SurveyProfile.where(:id => params[:id]).first
     image = survey_profile.image
-    feedback_questions = SurveyProfile::IMAGE_SURVEY_QUESTIONS
+    feedback_questions = ImageQuestion.all
     respond_to do |format|
       format.html
       format.json { render json: {:success => true, :survey_profile => survey_profile,
@@ -115,16 +115,41 @@ class SurveyProfilesController < ApplicationController
   end
 
   def image_profile_feedback
-    if true
-      respond_to do |format|
-        format.html
-        format.json { render json: {:success => true, :message => "Successfully submitted Image Suvery feedbacks"}}
+    image_survey_feedback_save = false
+    survey_profile = SurveyProfile.where(:id => params[:id]).first
+    image_survey_feedback = suvery_profile.image_survey_feedbacks.last rescue nil
+    member_survey_number = image_survey_feedback.present? ? image_survey_feedback.member_survey_number : 0
+    params[:survey_questions].each do |survey_question |
+      image_profile_feedback = survey_profile.image_survey_feedbacks.new
+      image_profile_feedback[:image_question_id] = survey_question[:id]
+      image_profile_feedback[:xcoordinate] = survey_question[:xCoordinate]
+      image_profile_feedback[:ycoordinate] = survey_question[:yCoordinate]
+      image_profile_feedback[:user_id] = current_user.present? ? current_user.id : nil
+      image_profile_feedback[:member_survey_number] = member_survey_number.present? ? member_survey_number + 1 : 0
+      if image_profile_feedback.save
+        image_survey_feedback_save = true
       end
-    else
-      respond_to do |format|
-        format.html
+    end
+
+    respond_to do |format|
+      format.html
+      if image_survey_feedback_save
+        format.json { render json: {:success => true, :message => "Successfully submitted Image Suvery feedbacks"}}
+      else
         format.json { render json: {:success => false, :message => "Your action submitted feedback is failed"}}
       end
+    end
+  end
+
+  def image_profile_feedback_report
+    survey_profile = SurveyProfile.where(:id => params[:id]).first
+    image = survey_profile.image
+    image_survey_feedbacks = ImageSurveyFeedback.joins(:image_question).where(:survey_profile_id => survey_profile.id).select("xcoordinate, ycoordinate, member_survey_number, marking_color")
+
+    image_questions = ImageQuestion.all
+    respond_to do |format|
+      format.html
+      format.json { render json: {:success => true, :image_survey_feedbacks => image_survey_feedbacks, :current_user => current_user, :survey_profile => survey_profile, :image => image }}
     end
   end
 
@@ -134,6 +159,9 @@ class SurveyProfilesController < ApplicationController
     end
     def image_params
       params[:image].permit( "id", "name", "image", "imageable_id", "imageable_type", "survey_profile_type", "image_url", "created_at", "updated_at");
+    end
+    def image_params
+      params[:image_survey_feedback].permit("id", "profile_survey_id", "image_question_id", "xcoordinate", "ycoordinate", "member_survey_number", "user_id", "integer", "created_at", "updated_at");
     end
 
 end

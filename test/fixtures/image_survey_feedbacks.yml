@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  profile_survey_id: 1
+  question_id: 1
+  xcoordinate: 1.5
+  ycoordinate: 1.5
+  member_survey_number: 1
+  user_id: MyString
+  integer: MyString
+
+two:
+  profile_survey_id: 1
+  question_id: 1
+  xcoordinate: 1.5
+  ycoordinate: 1.5
+  member_survey_number: 1
+  user_id: MyString
+  integer: MyString

@@ -32,5 +32,9 @@ surveyApp.config(['$routeProvider', '$locationProvider', function ($routeProvide
     templateUrl: 'survey_profiles/survey_image_profile_feedbacks.html',
     controller: 'SurveyImageProfilesFeedbackCtrl'
   });
+  $routeProvider.when('/survey_profiles/image/:id/feedback_report', {
+    templateUrl: 'survey_profiles/survey_image_profile_feedback_report.html',
+    controller: 'SurveyImageProfilesFeedbackReportCtrl'
+  });
 }]);
 

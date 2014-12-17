@@ -46,7 +46,7 @@
           Submit Feedback
         </a>
         <!-- either user is owner or admin then user allowed to see feedback report -->
-        <a ng-if="current_user.role_id == 1 || current_user.id == surveyProfile.user_id" href="#/survey_profiles/image/{{surveyProfile.id}}/features/feedback_report" class="btn btn-sm btn-primary">
+        <a ng-if="current_user.role_id == 1 || current_user.id == surveyProfile.user_id" href="#/survey_profiles/image/{{surveyProfile.id}}/feedback_report" class="btn btn-sm btn-primary">
           Feedback Report
         </a>
         <input ng-if="current_user.role_id == 1 || current_user.id == surveyProfile.user_id" type="button" class="btn btn-sm btn-danger" ng-click="delete(surveyProfile.id)" value="Delete"/>

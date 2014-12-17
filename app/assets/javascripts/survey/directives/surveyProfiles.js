@@ -110,8 +110,9 @@ surveyApp.directive('setImageOnCanvas', function(){
           var offset = $(event.target).offset();
           var xCoordinate = (event.pageX - offset.left);
           var yCoordinate = (event.pageY - offset.top);
-          context.fillStyle = $scope.image_survey_questions[$scope.question_counter]['color']; //"#DFA6B1";
+          context.fillStyle = $scope.image_survey_questions[$scope.question_counter]['marking_color']; //"#DFA6B1";
           context.beginPath();
+          context.globalAlpha = 0.4;
           context.arc(xCoordinate,yCoordinate, 15, 0 , Math.PI*2,true);
           context.closePath();
           context.fill();
@@ -170,3 +171,52 @@ surveyApp.directive('setImageOnCanvas', function(){
     }
   }
 });
+
+surveyApp.directive('displayFeedbackReport', ['$q', function($q){
+  return {
+    restrict: 'A',
+    controller: ['$scope', 'growl', function($scope, growl){
+      this.markClickedArea = function(context){
+        angular.forEach($scope.image_survey_feedbacks, function(image_survey_feedback){
+          var xCoordinate = image_survey_feedback.xcoordinate;
+          var yCoordinate = image_survey_feedback.ycoordinate;
+          context.fillStyle = image_survey_feedback.marking_color;
+          context.beginPath();
+          context.globalAlpha = 0.7;
+          context.arc(xCoordinate,yCoordinate, 15, 0 , Math.PI*2,true);
+          context.closePath();
+          context.fill();
+          //context.stroke();
+          //context.fill();
+        });
+
+      },
+
+      this.createCanvase = function(canvas, context) {
+        base_image = new Image();
+        base_image.src = $scope.image.image_url;
+        base_image.onload = function(){
+          canvas.width = base_image.width;
+          canvas.height = base_image.height;
+          if(canvas.width > 752){
+            canvas.width = 750;
+          }
+          if(canvas.height > 752){
+            canvas.height = 750;
+          }
+          context.drawImage(base_image, 0, 0, base_image.width, base_image.height);
+        }
+      };
+    }],
+    link: function(scope, element, attributes,ctrl){
+      var canvas = document.getElementById('myCanvas');
+      var context = canvas.getContext('2d');
+      var deferred = $q.defer();
+      ctrl.createCanvase(canvas, context);
+
+      setTimeout(function() {
+        ctrl.markClickedArea(context);
+      }, 1000);
+    }
+  }
+}]);

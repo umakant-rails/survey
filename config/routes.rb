@@ -14,7 +14,8 @@ Rails.application.routes.draw do
   resources :survey_profiles do
     post :create_image_survey, on: :collection
     get :image_survey_show, on: :member
-    post :image_profile_feedback, on: :collection
+    post :image_profile_feedback, on: :member
+    get :image_profile_feedback_report, on: :member
     resources :features
     resources :feature_feedbacks do
       get :feature_feedback_report, on: :collection

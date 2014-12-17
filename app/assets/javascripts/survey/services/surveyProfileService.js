@@ -8,7 +8,8 @@ function surveyProfileService($resource){
     'create': {method:'POST'},
     'delete': {method:'DELETE'},
     'surveyImageProfileShow': {url: '/survey_profiles/:id/image_survey_show.json', method: 'GET'},
-    'saveImageProfileFeedback': {url: '/survey_profiles/image_profile_feedback.json', method: 'POST'}
+    'saveImageProfileFeedback': {url: '/survey_profiles/:id/image_profile_feedback.json', method: 'POST'},
+    'imageProfileFeedbackReport': {url: '/survey_profiles/:id/image_profile_feedback_report.json', method: 'get'}
   });
 };
 surveyApp.service('surveyProfileService', ['$resource', surveyProfileService]);

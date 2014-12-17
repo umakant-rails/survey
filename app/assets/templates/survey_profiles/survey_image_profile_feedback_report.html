@@ -1,0 +1,26 @@
+<div class="row" style="margin-top:20px;"></div>
+<div ng-if="surveyProfile.id != undefined" class="row">
+  <div class="col-lg-2"></div>
+  <div class="col-lg-8">
+    <div class="row">
+      <div class="col-md-10 survey-profile-hdr">
+        {{surveyProfile.title}}
+      </div>
+      <div class="col-md-2"></div>
+      <div class="clear"></div>
+    </div>
+    <div class="row bdr"></div>
+    <div class="clear"></div>
+    <div class="clear"></div>
+    <div class="row img-survey-profile-feedback">
+      <div ng-if="image.image_url != undefined" id="dropped-image-div">
+        <canvas id="myCanvas" display-feedback-report ></canvas>
+      </div>
+      <div ng-if="image == undefined" id="dropped-image-div">
+        There is no image.
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-2"></div>
+</div>
+

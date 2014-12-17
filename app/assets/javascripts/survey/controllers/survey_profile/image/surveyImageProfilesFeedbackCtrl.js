@@ -10,15 +10,14 @@ function SurveyImageProfilesFeedbackCtrl($scope, $location, $routeParams, growl,
     });
   };
 
-  $scope.saveImageProfileFeedback = function(){
+  $scope.saveImageProfileFeedback = function(survey_profile_id){
     console.log($scope.image_survey_questions);
     var data = {
       survey_questions : $scope.image_survey_questions
     }
-    surveyProfileService.saveImageProfileFeedback({}, data, function(response){
+    surveyProfileService.saveImageProfileFeedback({id: survey_profile_id}, data, function(response){
       if(response.success) {
         growl.addSuccessMessage(response.message);
-        //$location.path('/survey_profiles/' + survey_profile_id + '/features/feedback_completed');
         $location.path('/survey_profiles/1/features/feedback_completed');
       } else {
         growl.addErrorMessage(response.message);
