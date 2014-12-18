@@ -176,6 +176,7 @@ surveyApp.directive('displayFeedbackReport', ['$q', function($q){
   return {
     restrict: 'A',
     controller: ['$scope', 'growl', function($scope, growl){
+
       this.markClickedArea = function(context){
         angular.forEach($scope.image_survey_feedbacks, function(image_survey_feedback){
           var xCoordinate = image_survey_feedback.xcoordinate;
@@ -186,8 +187,6 @@ surveyApp.directive('displayFeedbackReport', ['$q', function($q){
           context.arc(xCoordinate,yCoordinate, 15, 0 , Math.PI*2,true);
           context.closePath();
           context.fill();
-          //context.stroke();
-          //context.fill();
         });
 
       },
@@ -206,17 +205,20 @@ surveyApp.directive('displayFeedbackReport', ['$q', function($q){
           }
           context.drawImage(base_image, 0, 0, base_image.width, base_image.height);
         }
-      };
+      }
     }],
     link: function(scope, element, attributes,ctrl){
       var canvas = document.getElementById('myCanvas');
       var context = canvas.getContext('2d');
-      var deferred = $q.defer();
+      var is_executed = false;
       ctrl.createCanvase(canvas, context);
-
-      setTimeout(function() {
-        ctrl.markClickedArea(context);
-      }, 1000);
+      setInterval(function(){
+        var width = angular.element("#myCanvas").attr('width');
+        if(width != undefined && is_executed == false){
+          ctrl.markClickedArea(context);
+          is_executed = true;
+        }
+      }, 500);
     }
   }
 }]);
