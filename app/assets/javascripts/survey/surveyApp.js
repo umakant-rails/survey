@@ -10,7 +10,7 @@ surveyApp.config(['growlProvider', function(growlProvider) {
   growlProvider.globalTimeToLive(5000);
 }]);
 
-surveyApp.run(function($rootScope, $location, $window){
+surveyApp.run(['$rootScope', '$location', '$window', function($rootScope, $location, $window){
   $rootScope.$on('$locationChangeSuccess', function(){
     $rootScope.actualLocation = $location.path();
   });
@@ -25,4 +25,4 @@ surveyApp.run(function($rootScope, $location, $window){
       }
     }
   );
-});
+}]);
