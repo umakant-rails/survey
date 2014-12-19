@@ -119,15 +119,17 @@ class SurveyProfilesController < ApplicationController
     survey_profile = SurveyProfile.where(:id => params[:id]).first
     image_survey_feedback = suvery_profile.image_survey_feedbacks.last rescue nil
     member_survey_number = image_survey_feedback.present? ? image_survey_feedback.member_survey_number : 0
-    params[:survey_questions].each do |survey_question |
-      image_profile_feedback = survey_profile.image_survey_feedbacks.new
-      image_profile_feedback[:image_question_id] = survey_question[:id]
-      image_profile_feedback[:xcoordinate] = survey_question[:xCoordinate]
-      image_profile_feedback[:ycoordinate] = survey_question[:yCoordinate]
-      image_profile_feedback[:user_id] = current_user.present? ? current_user.id : nil
-      image_profile_feedback[:member_survey_number] = member_survey_number.present? ? member_survey_number + 1 : 0
-      if image_profile_feedback.save
-        image_survey_feedback_save = true
+    params[:survey_feedbacks].each do |survey_question |
+      if survey_question[:xCoordinate].present? && survey_question[:yCoordinate].present?
+        image_profile_feedback = survey_profile.image_survey_feedbacks.new
+        image_profile_feedback[:image_question_id] = survey_question[:image_question_id]
+        image_profile_feedback[:xcoordinate] = survey_question[:xCoordinate]
+        image_profile_feedback[:ycoordinate] = survey_question[:yCoordinate]
+        image_profile_feedback[:user_id] = current_user.present? ? current_user.id : nil
+        image_profile_feedback[:member_survey_number] = member_survey_number.present? ? member_survey_number + 1 : 0
+        if image_profile_feedback.save
+          image_survey_feedback_save = true
+        end
       end
     end
 

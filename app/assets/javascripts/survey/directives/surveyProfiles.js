@@ -117,33 +117,23 @@ surveyApp.directive('setImageOnCanvas', function(){
           context.closePath();
           context.fill();
           this.setCoordinates(xCoordinate, yCoordinate);
-          this.enableNextButton();
-          $scope.question_counter = $scope.question_counter + 1;
-          if($scope.question_counter < 3) {
-            var survey_question = $scope.image_survey_questions[$scope.question_counter]['question'];
-            angular.element("#image_survey_question").html(survey_question);
-          } else {
-            angular.element("#image_survey_question").html("");
-          }
-
           $scope.$apply();
         } else{
           this.showErrorMessage();
         }
       },
       this.setCoordinates = function(xCoordinate, yCoordinate){
-        $scope.image_survey_questions[$scope.question_counter]['xCoordinate'] = xCoordinate;
-        $scope.image_survey_questions[$scope.question_counter]['yCoordinate'] = yCoordinate;
+        $scope.survey_feedbacks.push({
+          image_question_id: $scope.image_survey_questions[$scope.question_counter].id,
+          xCoordinate: xCoordinate,
+          yCoordinate: yCoordinate
+        });
+        $scope.$apply();
       },
       this.showErrorMessage = function(){
         $scope.survey_question = "";
         growl.addErrorMessage('You have completed your survey. Now click on next.');
         $scope.$apply();
-      },
-      this.enableNextButton = function(){
-        if(angular.element("#image_feedback_next_btn").hasClass('disabled')){
-          angular.element("#image_feedback_next_btn").removeClass('disabled');
-        }
       },
       this.createCanvase = function(canvas, context) {
         base_image = new Image();
@@ -171,8 +161,31 @@ surveyApp.directive('setImageOnCanvas', function(){
     }
   }
 });
+surveyApp.directive('setNextQuestion', function(){
+  return {
+    restrict: 'A',
+    controller: ['$scope', 'growl', function($scope, growl){
+      this.setNextQuestion = function(){
+        $scope.question_counter = $scope.question_counter + 1;
+        $scope.survey_question = $scope.image_survey_questions[$scope.question_counter]['question'];
+        angular.element("#image_survey_question").html($scope.survey_question);
+        if($scope.question_counter == 2){
+          growl.addSuccessMessage('This is last question of survey.');
+          angular.element("#image_feedback_next_btn").addClass('hide');
+          angular.element("#image_feedback_submit_btn").removeClass('hide');
+        }
+        $scope.$apply();
+      }
+    }],
+    link: function(scope, element, attributes, ctrl){
+      element.on('click', function(){
+        ctrl.setNextQuestion();
+      });
+    }
+  }
+});
 
-surveyApp.directive('displayFeedbackReport', ['$q', function($q){
+surveyApp.directive('displayFeedbackReport', [function(){
   return {
     restrict: 'A',
     controller: ['$scope', 'growl', function($scope, growl){
