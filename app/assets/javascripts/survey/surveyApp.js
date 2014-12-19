@@ -10,6 +10,19 @@ surveyApp.config(['growlProvider', function(growlProvider) {
   growlProvider.globalTimeToLive(5000);
 }]);
 
-surveyApp.run(function() {
-  return console.log('angular app running');
+surveyApp.run(function($rootScope, $location, $window){
+  $rootScope.$on('$locationChangeSuccess', function(){
+    $rootScope.actualLocation = $location.path();
+  });
+  $rootScope.$watch(
+    function() {
+      return $location.path()
+    },
+    function(newLocation, oldLocation){
+      if($rootScope.actualLocation == newLocation){
+        $window.location.reload();
+        $location.path(newLocation);
+      }
+    }
+  );
 });

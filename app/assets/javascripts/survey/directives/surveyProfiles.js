@@ -112,8 +112,8 @@ surveyApp.directive('setImageOnCanvas', function(){
           var yCoordinate = (event.pageY - offset.top);
           context.fillStyle = $scope.image_survey_questions[$scope.question_counter]['marking_color']; //"#DFA6B1";
           context.beginPath();
-          context.globalAlpha = 0.7;
-          context.arc(xCoordinate,yCoordinate, 15, 0 , Math.PI*2,true);
+          context.globalAlpha = 0.8;
+          context.arc(xCoordinate,yCoordinate, 18, 0 , Math.PI*2,true);
           context.closePath();
           context.fill();
           this.setCoordinates(xCoordinate, yCoordinate);
@@ -183,8 +183,8 @@ surveyApp.directive('displayFeedbackReport', ['$q', function($q){
           var yCoordinate = image_survey_feedback.ycoordinate;
           context.fillStyle = image_survey_feedback.marking_color;
           context.beginPath();
-          context.globalAlpha = 0.7;
-          context.arc(xCoordinate,yCoordinate, 15, 0 , Math.PI*2,true);
+          context.globalAlpha = 0.8;
+          context.arc(xCoordinate,yCoordinate, 18, 0 , Math.PI*2,true);
           context.closePath();
           context.fill();
         });
