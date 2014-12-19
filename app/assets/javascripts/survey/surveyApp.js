@@ -10,13 +10,14 @@ surveyApp.config(['growlProvider', function(growlProvider) {
   growlProvider.globalTimeToLive(5000);
 }]);
 
+
 surveyApp.run(['$rootScope', '$location', '$window', function($rootScope, $location, $window){
   $rootScope.$on('$locationChangeSuccess', function(){
     $rootScope.actualLocation = $location.path();
   });
   $rootScope.$watch(
     function() {
-      return $location.path();
+      return $location.path()
     },
     function(newLocation, oldLocation){
       if($rootScope.actualLocation == newLocation){
