@@ -1,27 +1,22 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="surveyApp">
 <head>
   <title>Survey</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
-<body ng-app="surveyApp">
-  <%= render partial: "layouts/navbar" %>
-  <div id="container" class="container-fluid">
-    <!--<div ng-include="'layouts/navbar.html'"></div>-->
-    <% if notice %>
-      <div class="notice">
-        <p class="alert alert-success growl-notification"><a class="close" data-dismiss="alert">&times;</a><%= notice %></p>
-      </div>
-    <% end %>
-    <% if alert %>
-      <div class="alert">
-        <p class="alert alert-danger growl-notification"><a class="close" data-dismiss="alert">&times;</a><%= alert %></p>
-      </div>
-    <% end %>
-    <div growl class="growl-notification"><%= alert %></div>
+<body style="height:100%">
+  <div ng-controller="HeadersCtrl">
+    <%= render partial: "layouts/navbar" %>
+  </div>
+  <div ng-view id="container" class="container-fluid">
     <%= yield %>
   </div>
-</body>
+    <!--<%#= render partial: "layouts/navbar" %>
+    <div id="container" class="container-fluid">
+      <div growl class="growl-notification"><%= alert %></div>
+      <%#= yield %>
+    </div>-->
+  </body>
 </html>

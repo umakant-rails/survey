@@ -32,6 +32,8 @@ GEM
       railties (>= 3.1)
       sprockets
       tilt
+    angular_rails_csrf (1.0.3)
+      rails (>= 3, < 5)
     arel (5.0.1.20140414130214)
     bcrypt (3.1.9)
     bootstrap-sass (3.3.1.0)
@@ -218,6 +220,7 @@ PLATFORMS
 
 DEPENDENCIES
   angular-rails-templates
+  angular_rails_csrf
   bootstrap-sass
   bower-rails
   carrierwave

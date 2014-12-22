@@ -10,6 +10,7 @@
 //= require angular-growl
 //= require angular-file-upload
 //= require angular-file-upload-shim
+//= require devise
 //= require_tree ../templates
 //= require survey/surveyApp
 

@@ -1,0 +1,66 @@
+<div class="row">
+  <div class="col-lg-4"></div>
+  <div class="col-lg-4">
+    <form>
+      <div class="row signup-block">
+        <div class="col-lg-2"></div>
+        <div class="col-lg-8 signup-block-hdr">
+          <center><strong>Create user account</strong></center>
+        </div>
+        <div class="col-lg-2"></div>
+        <div class="clear bdr"></div>
+        <div class="col-lg-2"></div>
+        <div class="col-lg-8">
+          <!--< devise_error_messages! >-->
+        </div>
+        <div class="col-lg-2"></div>
+        <div class="clearboth"></div>
+        <div class="spacer"></div>
+        <div class="col-lg-2"></div>
+        <div class="col-lg-8">
+          <strong>Email</strong>
+          <div class="clear"></div>
+          <input type="email" name="email" ng-model="user.email" class="form-control" autofocus="true"/>
+        </div>
+        <div class="col-lg-2"></div>
+        <div class="clearboth"></div>
+        <div class="spacer"></div>
+        <div class="col-lg-2"></div>
+        <div class="col-lg-8">
+          <strong>Username</strong>
+          <div class="clear"></div>
+          <input type="text" name="username" ng-model="user.username" class="form-control" autofocus="true"/>
+        </div>
+        <div class="col-lg-2"></div>
+        <div class="clearboth"></div>
+        <div class="spacer"></div>
+        <div class="col-lg-2"></div>
+        <div class="col-lg-8">
+          <strong>Password</strong>
+          <div class="clear"></div>
+          <input type="password" name="password" ng-model="user.password" class="form-control" autocomplete="off"/>
+        </div>
+        <div class="col-lg-2"></div>
+        <div class="clearboth"></div>
+        <div class="spacer"></div>
+        <div class="col-lg-2"></div>
+        <div class="col-lg-8">
+          <strong>Password Confirmation</strong>
+          <div class="clear"></div>
+          <input type="password" name="password" ng-model="user.password_confirmation" class="form-control" autocomplete="off"/>
+        </div>
+        <div class="col-lg-2"></div>
+        <div class="clearboth"></div>
+        <div class="spacer"></div>
+        <div class="col-lg-2"></div>
+        <div class="col-lg-8">
+          <input type="submit" value="Create Account" ng-click="createNewAccount()" class='btn btn-primary form-control'/>
+          <div class="clear"></div>
+        </div>
+        <div class="col-lg-2"></div>
+      </div>
+    </form>
+  </div>
+  <div class="col-lg-4"></div>
+</div>
+

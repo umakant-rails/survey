@@ -153,7 +153,9 @@ surveyApp.directive('setImageOnCanvas', function(){
     }],
     link: function(scope, element, attributes,ctrl){
       var canvas = document.getElementById('myCanvas');
-      var context = canvas.getContext('2d');
+      if(canvas != null){
+        var context = canvas.getContext('2d');
+      }
       ctrl.createCanvase(canvas, context);
       element.on('click', function(event){
         ctrl.markClickedArea(event, context)

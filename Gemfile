@@ -41,6 +41,7 @@ gem 'spring',        group: :development
 gem 'devise'
 gem 'bower-rails'
 gem 'angular-rails-templates'
+gem 'angular_rails_csrf'
 gem "mini_magick"
 gem "carrierwave"
 gem "fog"
