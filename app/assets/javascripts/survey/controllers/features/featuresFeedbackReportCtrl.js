@@ -3,8 +3,8 @@ function FeaturesFeedbackReportCtrl($scope, $location, $routeParams, featureFeed
   $scope.initFeedbackReport = function(){
     if(Auth.isAuthenticated()){
       featureFeedbackService.featureFeedbackReport({survey_profile_id: $routeParams.id}, function(response){
-        $scope.survey_profile = response.survey_profile;
-        if($scope.survey_profile.user_id == Auth.currentUser.id || Auth.currentUser.role_id == 1){
+        $scope.surveyProfile = response.survey_profile;
+        if($scope.surveyProfile.user_id == Auth.currentUser.id || Auth.currentUser.role_id == 1){
           $scope.visited_user = response.visited_user;
           $scope.features_feedback = response.features_feedback;
         } else {

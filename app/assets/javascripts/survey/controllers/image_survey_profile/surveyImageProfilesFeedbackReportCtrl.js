@@ -1,10 +1,10 @@
-function SurveyImageProfilesFeedbackReportCtrl($scope, $location, $routeParams, growl, surveyProfileService, featureFactory) {
+function SurveyImageProfilesFeedbackReportCtrl($scope, $location, $routeParams, growl, surveyProfileService, Auth) {
   $scope.surveyImageProfileFeedbackReportIndex =  function() {
     if(Auth.isAuthenticated()){
       surveyProfileService.imageProfileFeedbackReport({id: $routeParams.id}, function(response){
-        if(response.success) {
+        $scope.surveyProfile = response.survey_profile;
+        if($scope.surveyProfile.user_id == Auth.currentUser.id || Auth.currentUser.role_id == 1){
           $scope.image_survey_feedbacks = response.image_survey_feedbacks;
-          $scope.surveyProfile = response.survey_profile;
           $scope.image = response.image;
           $scope.current_user = response.current_user;
         } else {
@@ -21,4 +21,4 @@ function SurveyImageProfilesFeedbackReportCtrl($scope, $location, $routeParams, 
   $scope.surveyImageProfileFeedbackReportIndex();
 };
 
-surveyApp.controller('SurveyImageProfilesFeedbackReportCtrl', ['$scope', '$location', '$routeParams', 'growl', 'surveyProfileService', 'featureFactory', SurveyImageProfilesFeedbackReportCtrl]);
+surveyApp.controller('SurveyImageProfilesFeedbackReportCtrl', ['$scope', '$location', '$routeParams', 'growl', 'surveyProfileService', 'Auth', SurveyImageProfilesFeedbackReportCtrl]);

@@ -144,19 +144,14 @@ class SurveyProfilesController < ApplicationController
   end
 
   def image_profile_feedback_report
-    survey_profile = current_user.survey_profiles.where(:id => params[:id]).first
-    image = survey_profile.present? ? survey_profile.image  : nil
-    image_survey_feedbacks = ImageSurveyFeedback.joins(:image_question).where(:survey_profile_id => survey_profile.id).select("xcoordinate, ycoordinate, member_survey_number, marking_color") rescue nil
-    if image_survey_feedbacks.present?
-      respond_to do |format|
-        format.html
-        format.json { render json: {:success => true, :image_survey_feedbacks => image_survey_feedbacks, :current_user => current_user, :survey_profile => survey_profile, :image => image }}
-      end
-    else
-      respond_to do |format|
-        format.html
-        format.json { render json: {:success => false, :image_survey_feedbacks => image_survey_feedbacks, :current_user => current_user, :survey_profile => survey_profile, :image => image }}
-      end
+    survey_profile = SurveyProfile.where(:id => params[:id]).first
+    image = survey_profile.image
+    image_survey_feedbacks = ImageSurveyFeedback.joins(:image_question).where(:survey_profile_id => survey_profile.id).select("xcoordinate, ycoordinate, member_survey_number, marking_color")
+
+    image_questions = ImageQuestion.all
+    respond_to do |format|
+      format.html
+      format.json { render json: {:success => true, :image_survey_feedbacks => image_survey_feedbacks, :current_user => current_user, :survey_profile => survey_profile, :image => image }}
     end
   end
 
