@@ -1,7 +1,10 @@
-function SurveyProfilesNewCtrl($scope, $location, surveyProfileService, growl) {
-
+function SurveyProfilesNewCtrl($scope, $location, surveyProfileService, growl, Auth) {
   $scope.initSurveyProfile = function(){
-    $scope.surveyProfile = {}
+    if(Auth.isAuthenticated()){
+      $scope.surveyProfile = {}
+    } else {
+      $location.path("/");
+    }
   };
 
   $scope.createSortingSurveyProfile = function(){
@@ -21,4 +24,4 @@ function SurveyProfilesNewCtrl($scope, $location, surveyProfileService, growl) {
   };
   $scope.initSurveyProfile();
 };
-surveyApp.controller('SurveyProfilesNewCtrl', ['$scope', '$location', 'surveyProfileService', 'growl', SurveyProfilesNewCtrl]);
+surveyApp.controller('SurveyProfilesNewCtrl', ['$scope', '$location', 'surveyProfileService', 'growl', 'Auth', SurveyProfilesNewCtrl]);

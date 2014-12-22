@@ -1,7 +1,11 @@
-function SurveyImageProfilesNewCtrl($scope, $location, surveyProfileService, growl, $upload) {
+function SurveyImageProfilesNewCtrl($scope, $location, surveyProfileService, growl, $upload, Auth) {
 
   $scope.initSurveyProfile = function(){
-    $scope.surveyProfile = {}
+    if(Auth.isAuthenticated()){
+      $scope.surveyProfile = {}
+    } else {
+      $location.path("/")
+    }
   };
 
   $scope.dropText = 'Drop files here...';
@@ -37,4 +41,4 @@ function SurveyImageProfilesNewCtrl($scope, $location, surveyProfileService, gro
   };
   $scope.initSurveyProfile();
 };
-surveyApp.controller('SurveyImageProfilesNewCtrl', ['$scope', '$location', 'surveyProfileService', 'growl', '$upload', SurveyImageProfilesNewCtrl]);
+surveyApp.controller('SurveyImageProfilesNewCtrl', ['$scope', '$location', 'surveyProfileService', 'growl', '$upload', 'Auth', SurveyImageProfilesNewCtrl]);

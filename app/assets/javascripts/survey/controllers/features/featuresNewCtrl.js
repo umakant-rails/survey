@@ -1,14 +1,25 @@
-function FeaturesNewCtrl($scope, $location, $routeParams, featureService, growl) {
+function FeaturesNewCtrl($scope, $location, $routeParams, featureService, Auth, growl) {
 
   $scope.init = function(){
     var numbersOfFeature = [];
-    featureService.all({survey_profile_id: $routeParams.id}, function(response){
-      for(var count = 0; count < response.numbers_of_feature; count ++){
-        numbersOfFeature.push(count+1);
-      }
-      $scope.survey_profile = response.survey_profile;
-      $scope.numbersOfFeature = numbersOfFeature;
-    });
+    if(Auth.isAuthenticated()){
+      featureService.all({survey_profile_id: $routeParams.id}, function(response){
+        $scope.surveyProfile = response.survey_profile;
+        console.log(Auth.currentUser)
+        if($scope.surveyProfile.user_id == Auth.currentUser.id || Auth.currentUser.role_id == 1){
+          for(var count = 0; count < response.numbers_of_feature; count ++){
+            numbersOfFeature.push(count+1);
+          }
+          $scope.numbersOfFeature = numbersOfFeature;
+        } else {
+          growl.addErrorMessage("You are not able to create feature to this survey profile.");
+          $location.path("/homes");
+        }
+      });
+    } else {
+      growl.addErrorMessage("please login to be continue.");
+      $location.path("/");
+    }
   };
 
   $scope.createFeatures = function(survey_profile_id){
@@ -36,4 +47,4 @@ function FeaturesNewCtrl($scope, $location, $routeParams, featureService, growl)
 
  $scope.init();
 };
-surveyApp.controller('FeaturesNewCtrl', ['$scope', '$location', '$routeParams', 'featureService', 'growl', FeaturesNewCtrl]);
+surveyApp.controller('FeaturesNewCtrl', ['$scope', '$location', '$routeParams', 'featureService', 'Auth', 'growl', FeaturesNewCtrl]);

@@ -1,10 +1,17 @@
-function SurveyProfilesEditCtrl($scope, $routeParams, $location, surveyProfileService, featureFactory, growl) {
+function SurveyProfilesEditCtrl($scope, $routeParams, $location, surveyProfileService, Auth, growl) {
 
   $scope.displaySurveyProfile = function(){
-    surveyProfileService.edit({id: $routeParams.id}, function(response){
-      $scope.surveyProfile = response.survey_profile;
-      $scope.current_user = response.current_user;
-    });
+    if(Auth.isAuthenticated()){
+      surveyProfileService.edit({id: $routeParams.id}, function(response){
+        $scope.surveyProfile = response.survey_profile;
+        $scope.current_user = response.current_user;
+        if($scope.surveyProfile.user_id != Auth.currentUser.id || Auth.currentUser.role_id == 1){
+          $location.path("/homes");
+        }
+      });
+    } else {
+      $location.path("/");
+    }
   };
 
   $scope.updateSurveyProfile = function(survey_profile_id){
@@ -26,4 +33,4 @@ function SurveyProfilesEditCtrl($scope, $routeParams, $location, surveyProfileSe
   $scope.displaySurveyProfile();
 };
 
-surveyApp.controller('SurveyProfilesEditCtrl', ['$scope', '$routeParams', '$location', 'surveyProfileService', 'featureFactory', 'growl', SurveyProfilesEditCtrl]);
+surveyApp.controller('SurveyProfilesEditCtrl', ['$scope', '$routeParams', '$location', 'surveyProfileService', 'Auth', 'growl', SurveyProfilesEditCtrl]);

@@ -74,7 +74,7 @@ class FeatureFeedbacksController < ApplicationController
     respond_to do |format|
       format.html
       format.json { render json: {:success => true, :features_feedback => features_feedback,
-        :visited_user => visited_user}}
+        :visited_user => visited_user, :survey_profile => survey_profile}}
     end
   end
 
